@@ -1,0 +1,177 @@
+diff --git a/dist/events-583399dd.cjs.prod.js b/dist/events-583399dd.cjs.prod.js
+index f3834fa28aa8504b48da031e326acb332a722965..32f1eb037959d46b8a8b8c4eb6c5c6e050688311 100644
+--- a/dist/events-583399dd.cjs.prod.js
++++ b/dist/events-583399dd.cjs.prod.js
+@@ -32,6 +32,45 @@ var React__namespace = /*#__PURE__*/_interopNamespace(React);
+ var THREE__namespace = /*#__PURE__*/_interopNamespace(THREE);
+ var Tb__default = /*#__PURE__*/_interopDefault(Tb);
+ 
++class LegacyClock {
++  constructor(autoStart = true) {
++    this.autoStart = autoStart;
++    this.startTime = 0;
++    this.oldTime = 0;
++    this.elapsedTime = 0;
++    this.running = false;
++  }
++  start() {
++    this.startTime = performance.now();
++    this.oldTime = this.startTime;
++    this.elapsedTime = 0;
++    this.running = true;
++  }
++  stop() {
++    this.getElapsedTime();
++    this.running = false;
++    this.autoStart = false;
++  }
++  getElapsedTime() {
++    this.getDelta();
++    return this.elapsedTime;
++  }
++  getDelta() {
++    let diff = 0;
++    if (this.autoStart && !this.running) {
++      this.start();
++      return 0;
++    }
++    if (this.running) {
++      const newTime = performance.now();
++      diff = (newTime - this.oldTime) / 1000;
++      this.oldTime = newTime;
++      this.elapsedTime += diff;
++    }
++    return diff;
++  }
++}
++
+ var threeTypes = /*#__PURE__*/Object.freeze({
+   __proto__: null
+ });
+@@ -1038,7 +1077,7 @@ const createStore = (invalidate, advance) => {
+       linear: false,
+       flat: false,
+       controls: null,
+-      clock: new THREE__namespace.Clock(),
++      clock: new LegacyClock(),
+       pointer,
+       mouse: pointer,
+       frameloop: 'always',
+diff --git a/dist/events-b389eeca.esm.js b/dist/events-b389eeca.esm.js
+index 76f308c96cb09a20e854133e48ec9ef7682edecc..75a24bbb92522c555b7f3d0001e696a2bb1edd37 100644
+--- a/dist/events-b389eeca.esm.js
++++ b/dist/events-b389eeca.esm.js
+@@ -7,6 +7,45 @@ import Tb, { unstable_scheduleCallback, unstable_IdlePriority } from 'scheduler'
+ import { jsx, Fragment } from 'react/jsx-runtime';
+ import { useFiber, useContextBridge, traverseFiber } from 'its-fine';
+ 
++class LegacyClock {
++  constructor(autoStart = true) {
++    this.autoStart = autoStart;
++    this.startTime = 0;
++    this.oldTime = 0;
++    this.elapsedTime = 0;
++    this.running = false;
++  }
++  start() {
++    this.startTime = performance.now();
++    this.oldTime = this.startTime;
++    this.elapsedTime = 0;
++    this.running = true;
++  }
++  stop() {
++    this.getElapsedTime();
++    this.running = false;
++    this.autoStart = false;
++  }
++  getElapsedTime() {
++    this.getDelta();
++    return this.elapsedTime;
++  }
++  getDelta() {
++    let diff = 0;
++    if (this.autoStart && !this.running) {
++      this.start();
++      return 0;
++    }
++    if (this.running) {
++      const newTime = performance.now();
++      diff = (newTime - this.oldTime) / 1000;
++      this.oldTime = newTime;
++      this.elapsedTime += diff;
++    }
++    return diff;
++  }
++}
++
+ var threeTypes = /*#__PURE__*/Object.freeze({
+   __proto__: null
+ });
+@@ -1013,7 +1052,7 @@ const createStore = (invalidate, advance) => {
+       linear: false,
+       flat: false,
+       controls: null,
+-      clock: new THREE.Clock(),
++      clock: new LegacyClock(),
+       pointer,
+       mouse: pointer,
+       frameloop: 'always',
+diff --git a/dist/events-f19bcc32.cjs.dev.js b/dist/events-f19bcc32.cjs.dev.js
+index 07d45d4c0bd7d57301d338040e8aa71c88fce7c5..7314dab555771d264b4316b75be38f63a1e73684 100644
+--- a/dist/events-f19bcc32.cjs.dev.js
++++ b/dist/events-f19bcc32.cjs.dev.js
+@@ -32,6 +32,45 @@ var React__namespace = /*#__PURE__*/_interopNamespace(React);
+ var THREE__namespace = /*#__PURE__*/_interopNamespace(THREE);
+ var Tb__default = /*#__PURE__*/_interopDefault(Tb);
+ 
++class LegacyClock {
++  constructor(autoStart = true) {
++    this.autoStart = autoStart;
++    this.startTime = 0;
++    this.oldTime = 0;
++    this.elapsedTime = 0;
++    this.running = false;
++  }
++  start() {
++    this.startTime = performance.now();
++    this.oldTime = this.startTime;
++    this.elapsedTime = 0;
++    this.running = true;
++  }
++  stop() {
++    this.getElapsedTime();
++    this.running = false;
++    this.autoStart = false;
++  }
++  getElapsedTime() {
++    this.getDelta();
++    return this.elapsedTime;
++  }
++  getDelta() {
++    let diff = 0;
++    if (this.autoStart && !this.running) {
++      this.start();
++      return 0;
++    }
++    if (this.running) {
++      const newTime = performance.now();
++      diff = (newTime - this.oldTime) / 1000;
++      this.oldTime = newTime;
++      this.elapsedTime += diff;
++    }
++    return diff;
++  }
++}
++
+ var threeTypes = /*#__PURE__*/Object.freeze({
+   __proto__: null
+ });
+@@ -1038,7 +1077,7 @@ const createStore = (invalidate, advance) => {
+       linear: false,
+       flat: false,
+       controls: null,
+-      clock: new THREE__namespace.Clock(),
++      clock: new LegacyClock(),
+       pointer,
+       mouse: pointer,
+       frameloop: 'always',
