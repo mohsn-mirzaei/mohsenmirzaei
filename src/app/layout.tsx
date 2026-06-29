@@ -5,6 +5,8 @@ import {
   Space_Grotesk,
   Instrument_Serif,
 } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { buildJsonLd } from "@/lib/jsonld";
@@ -98,6 +100,8 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning className="noise min-h-dvh bg-ink text-fg">
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
