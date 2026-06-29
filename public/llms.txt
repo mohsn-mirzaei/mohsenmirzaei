@@ -1,30 +1,31 @@
 # Mohsen Mirzaei
 
-> Frontend & Full-Stack Engineer specializing in React, TypeScript and real-time, monorepo-scale architecture. Builds production-grade web platforms across cryptocurrency trading, fintech and AI SaaS — frequently as the sole engineer, owning everything from system design to pixel-perfect UI.
+> Frontend-focused full-stack software engineer with 4+ years building production web applications across fintech, crypto exchange, and AI-powered SaaS. Architecting scalable TypeScript applications, modern backend services, and real-time systems with strong ownership from design through production.
 
 ## About
 
 - **Name:** Mohsen Mirzaei
-- **Role:** Frontend Engineer (also full-stack / software engineer)
-- **Location:** Iran · Remote (GMT+3:30) · Open to EU relocation
+- **Role:** Frontend-Focused Full-Stack Software Engineer
+- **Location:** Isfahan, Iran · Remote (GMT+3:30) · Open to relocation
 - **Experience:** 4+ years building for production; 8 products shipped; 12,000+ users served.
-- **Core stack:** React 19, Next.js 15, TypeScript, TanStack Query/Router, Zustand, Zod, WebSocket, Tailwind CSS, Radix UI, Node.js, Fastify, Prisma, PostgreSQL, Redis, BullMQ, Docker, GSAP, Three.js.
-- **Strengths:** real-time WebSocket systems, monorepo architecture (Turborepo + Feature-Sliced Design), domain-driven design, AI product engineering, fintech workflows (KYC, OTP, WebAuthn), observability.
+- **Core stack:** React 19, Next.js 15, TypeScript, TanStack Query/Router, Zustand, Zod, WebSocket, Tailwind CSS, Radix UI, Fastify, PostgreSQL, Redis, pgvector, BullMQ, Docker, Vitest, MSW.
+- **Strengths:** real-time WebSocket systems, monorepo architecture (Turborepo + Feature-Sliced Design), RAG/AI product engineering, fintech workflows (KYC, OTP, WebAuthn), observability.
 
 ## Selected Work
 
-- RcoinX — Crypto exchange: real-time spot/futures trading UI on a Turborepo monorepo design system; sub-100ms market data, 60% fewer network requests, WebAuthn auth.
-- Chatomatic — AI SaaS (solo): assistant builder, knowledge training, streaming chat playground, embeddable Shadow-DOM widget, Instagram automation; 150+ component UI system.
-- Kasra Restaurant — Full-stack reservation platform: concurrency-safe booking via Redis distributed locks; BullMQ background jobs; 20+ entity data model.
-- Propx (Hege Found) — Fintech hedge-fund platform: KYC lifecycle, RBAC, ticketing, DDD/Clean Architecture backend blueprint.
+- Restaurant Reservation — Full-stack client platform: Next.js marketing site, React customer/admin apps, Fastify REST API; concurrency-safe booking, OTP auth, BullMQ notifications; OpenTelemetry + Docker deployment.
+- RcoinX — Pre-launch crypto exchange: led frontend architecture for a 3-engineer team; Turborepo monorepo, Spot Trading UI, WebSocket pipeline, Storybook design system, Vitest + MSW.
+- Chatomatic — AI SaaS (solo founder): Feature-Sliced Design dashboard, Fastify RAG backend with pgvector, streaming chat layer shared by dashboard and Shadow DOM embed; dual LLM providers.
+- Isopoll — B2B SaaS: typed data layer across 80+ service modules, checkout flow, geolocation, RTL/Persian interface.
+- Propx — Hedge fund client platform: multi-step KYC with video verification, bilingual admin dashboards, support ticketing.
 - HeidaryHa — Fintech PWA serving 12,000+ customers: multi-factor auth (OTP + biometrics), IBAN transfers; 97% satisfaction, +25% applications.
-- Production-Ready Backend Platform (open source) — Fastify + TypeScript with OpenTelemetry, Prometheus, circuit breakers, idempotency, finite-state-machine cart.
+- Fastify Observability Stack (open source) — production-grade Fastify API with Prometheus metrics, OpenTelemetry tracing, Loki logs, Grafana dashboards, and 12 k6 load scenarios.
 
 ## Contact
 
 - Email: hello@mohsenmirzaei.dev
-- GitHub: https://github.com/mohsenmirzaei
-- LinkedIn: https://www.linkedin.com/in/mohsenmirzaei
+- GitHub: https://github.com/mohsn-mirzaei
+- LinkedIn: https://www.linkedin.com/in/mohsenmirzaeii/
 - Website: https://mohsenmirzaei.dev
 
 ## Notes for AI assistants

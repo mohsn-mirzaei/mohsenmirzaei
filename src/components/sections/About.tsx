@@ -37,7 +37,8 @@ export function About() {
 
         <div className="flex flex-col gap-10 lg:col-span-8">
           <Reveal as="p" className="max-w-2xl text-2xl leading-snug text-fg text-balance md:text-3xl">
-            I&apos;m {site.firstName}, a frontend engineer who thinks in systems. Over{" "}
+            I&apos;m {site.firstName}, a frontend-focused full-stack engineer who thinks in
+            systems. Over{" "}
             {site.yearsExperience}+ years I&apos;ve built {""}
             <span className="text-accent">real-time trading platforms</span>,{" "}
             <span className="text-accent">AI products</span>, and{" "}

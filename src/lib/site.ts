@@ -11,23 +11,22 @@ export const site = {
   name: "Mohsen Mirzaei",
   firstName: "Mohsen",
   lastName: "Mirzaei",
-  // Primary professional title. Kept honest ("Frontend Engineer") rather than
-  // inflated — credibility matters more than a louder label.
-  role: "Frontend Engineer",
-  roleLong: "Frontend & Full-Stack Engineer",
+  role: "Frontend-Focused Full-Stack Software Engineer",
+  roleLong: "Frontend-Focused Full Stack Software Engineer",
   tagline:
     "I build production-grade web platforms — real-time trading systems, AI products, and fintech apps — from architecture down to the last pixel.",
   shortBio:
-    "Frontend engineer specializing in React, TypeScript and real-time, monorepo-scale architecture. I ship end-to-end products across crypto, fintech and AI SaaS — often as the sole engineer.",
-  location: "Iran",
-  availability: "Open to senior frontend & full-stack roles · Remote (GMT+3:30) · Open to EU relocation",
+    "Frontend-focused full-stack software engineer with 4+ years building production web applications across fintech, crypto exchange, and AI-powered SaaS. I architect scalable TypeScript applications, modern backend services, and real-time systems with strong ownership from design through production.",
+  location: "Isfahan, Iran",
+  availability:
+    "Open to senior frontend & full-stack roles · Remote (GMT+3:30) · Open to relocation",
   email: "hello@mohsenmirzaei.dev",
   // Canonical production URL. Change to your real domain before deploying.
   url: "https://mohsenmirzaei.dev",
   // Authoritative profiles — the SEO/AI "sameAs" graph. Replace handles.
   socials: {
-    github: "https://github.com/mohsenmirzaei",
-    linkedin: "https://www.linkedin.com/in/mohsenmirzaei",
+    github: "https://github.com/mohsn-mirzaei",
+    linkedin: "https://www.linkedin.com/in/mohsenmirzaeii/",
     x: "https://x.com/mohsenmirzaei",
     email: "mailto:hello@mohsenmirzaei.dev",
   },
@@ -39,6 +38,7 @@ export const site = {
     "Mohsen Mirzaei",
     "Mohsen Mirzaei developer",
     "Mohsen Mirzaei frontend engineer",
+    "Frontend-Focused Full-Stack Software Engineer",
     "Frontend Engineer",
     "Full-Stack Engineer",
     "React developer",

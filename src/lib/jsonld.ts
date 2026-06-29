@@ -55,7 +55,7 @@ export function buildJsonLd() {
         knowsLanguage: ["English", "Persian"],
         hasOccupation: {
           "@type": "Occupation",
-          name: "Frontend Engineer",
+          name: site.role,
           occupationalCategory: "15-1254.00",
           skills: knowsAbout.join(", "),
         },
