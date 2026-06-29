@@ -1,11 +1,9 @@
 /**
  * Central site configuration.
  *
- * NOTE FOR MOHSEN: update the placeholder links/email/domain below with your
- * real values. These power SEO metadata, the JSON-LD `sameAs` graph (the single
- * strongest "this is the same person" signal for Google + AI crawlers), the
- * contact section, and llms.txt. The more authoritative profiles you list, the
- * easier you are to find.
+ * Powers SEO metadata, the JSON-LD `sameAs` graph (the single strongest
+ * "this is the same person" signal for Google + AI crawlers), the contact
+ * section, and llms.txt.
  */
 export const site = {
   name: "Mohsen Mirzaei",
@@ -20,15 +18,14 @@ export const site = {
   location: "Isfahan, Iran",
   availability:
     "Open to senior frontend & full-stack roles · Remote (GMT+3:30) · Open to relocation",
-  email: "hello@mohsenmirzaei.dev",
-  // Canonical production URL. Change to your real domain before deploying.
-  url: "https://mohsenmirzaei.dev",
+  email: "hello@mohsenmirzaei.com",
+  url: "https://mohsenmirzaei.com",
   // Authoritative profiles — the SEO/AI "sameAs" graph. Replace handles.
   socials: {
     github: "https://github.com/mohsn-mirzaei",
     linkedin: "https://www.linkedin.com/in/mohsenmirzaeii/",
     x: "https://x.com/mohsenmirzaei",
-    email: "mailto:hello@mohsenmirzaei.dev",
+    email: "mailto:hello@mohsenmirzaei.com",
   },
   // Optional: a downloadable CV placed in /public.
   resumeUrl: "/mohsen-mirzaei-resume.pdf",

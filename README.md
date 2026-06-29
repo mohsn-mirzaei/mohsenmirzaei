@@ -50,10 +50,9 @@ see all content and structured data immediately.
 | Portrait photo | `public/images/mohsen-portrait.jpg` |
 | AI index | `public/llms.txt` |
 
-> **Before deploying:** update the placeholder values in `src/lib/site.ts`
-> (real domain, GitHub/LinkedIn/X URLs, email) and confirm the `period` dates in
-> `src/lib/data.ts`. The `sameAs` links and canonical `url` power discoverability.
-> Optionally drop a CV at `public/mohsen-mirzaei-resume.pdf`.
+> **Before deploying:** confirm the `period` dates in `src/lib/data.ts` and keep
+> `src/lib/site.ts` in sync (canonical URL, social links, email). Optionally drop
+> a CV at `public/mohsen-mirzaei-resume.pdf`.
 
 ## Deploy
 
