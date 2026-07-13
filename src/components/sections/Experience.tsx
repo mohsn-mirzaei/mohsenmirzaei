@@ -31,7 +31,7 @@ export function Experience() {
               <div className="md:col-span-6">
                 <p className="text-base leading-relaxed text-fg-dim">{exp.summary}</p>
                 <ul className="mt-4 flex flex-col gap-2">
-                  {exp.highlights.slice(0, 3).map((h) => (
+                  {exp.highlights.slice(0, 4).map((h) => (
                     <li key={h} className="flex gap-3 text-sm leading-relaxed text-muted">
                       <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
                       {h}

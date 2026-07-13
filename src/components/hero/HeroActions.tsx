@@ -22,6 +22,15 @@ export function HeroActions() {
       >
         Get in touch
       </MagneticButton>
+      <MagneticButton
+        href={site.resumeUrl}
+        download="Mohsen_Mirzaei_Resume.pdf"
+        ariaLabel="Download Mohsen Mirzaei resume"
+        className="group inline-flex items-center gap-3 rounded-full border border-line px-7 py-3.5 text-sm font-medium text-fg-dim transition-colors hover:border-accent hover:text-accent"
+      >
+        Download resume
+        <span className="transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
+      </MagneticButton>
     </div>
   );
 }

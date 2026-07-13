@@ -3,6 +3,7 @@ import { Reveal } from "@/components/anim/Reveal";
 import { SplitReveal } from "@/components/anim/SplitReveal";
 import { HeroCanvas } from "@/components/hero/HeroCanvas";
 import { HeroActions } from "@/components/hero/HeroActions";
+import { LocalTime } from "@/components/layout/LocalTime";
 
 export function Hero() {
   return (
@@ -39,8 +40,10 @@ export function Hero() {
         </div>
 
         <div className="flex items-end justify-between">
-          <Reveal as="p" className="eyebrow">
-            {site.location} · GMT+3:30
+          <Reveal className="eyebrow flex items-center gap-3">
+            <span>{site.location}</span>
+            <span className="h-3 w-px bg-line-strong" />
+            <LocalTime />
           </Reveal>
           <div className="hidden items-center gap-3 text-xs uppercase tracking-[0.25em] text-muted md:flex">
             Scroll

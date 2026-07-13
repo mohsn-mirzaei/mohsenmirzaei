@@ -2,6 +2,7 @@
 
 import { useRef, type ElementType, type ReactNode } from "react";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
+import { onSiteReady } from "@/lib/ready";
 
 type RevealProps = {
   children: ReactNode;
@@ -25,7 +26,8 @@ type PolymorphicTag = React.ComponentType<{
 /**
  * Scroll-triggered fade/translate reveal. Content is real DOM (good for SEO);
  * GSAP only sets the hidden state on the client, so no-JS / reduced-motion
- * users always see it.
+ * users always see it. On first load the tween waits for the preloader
+ * curtain (onSiteReady) so intros don't finish behind it.
  */
 export function Reveal({
   children,
@@ -40,16 +42,20 @@ export function Reveal({
   const ref = useRef<HTMLElement>(null);
 
   useGSAP(
-    () => {
-      if (prefersReducedMotion()) return;
-      gsap.from(ref.current, {
-        autoAlpha: 0,
-        y,
-        duration,
-        delay,
-        ease: "power3.out",
-        scrollTrigger: { trigger: ref.current, start },
+    (_, contextSafe) => {
+      if (prefersReducedMotion() || !ref.current) return;
+      gsap.set(ref.current, { autoAlpha: 0, y });
+      const play = contextSafe!(() => {
+        gsap.to(ref.current, {
+          autoAlpha: 1,
+          y: 0,
+          duration,
+          delay,
+          ease: "power3.out",
+          scrollTrigger: { trigger: ref.current, start },
+        });
       });
+      return onSiteReady(play);
     },
     { scope: ref },
   );

@@ -10,6 +10,7 @@ type MagneticButtonProps = {
   className?: string;
   strength?: number;
   ariaLabel?: string;
+  download?: string | boolean;
 };
 
 /** A button/link that subtly pulls toward the pointer (magnetic effect). */
@@ -20,6 +21,7 @@ export function MagneticButton({
   className,
   strength = 0.4,
   ariaLabel,
+  download,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLAnchorElement & HTMLButtonElement>(null);
 
@@ -57,6 +59,7 @@ export function MagneticButton({
       <a
         {...common}
         href={href}
+        download={download}
         target={external ? "_blank" : undefined}
         rel={external ? "noopener noreferrer" : undefined}
       >

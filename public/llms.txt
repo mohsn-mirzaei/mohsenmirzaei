@@ -1,29 +1,37 @@
 # Mohsen Mirzaei
 
-> Frontend-focused full-stack software engineer with 4+ years building production web applications across fintech, crypto exchange, and AI-powered SaaS. Architecting scalable TypeScript applications, modern backend services, and real-time systems with strong ownership from design through production.
+> Full-stack engineer with 4+ years building production web applications across fintech, crypto exchange, and AI SaaS. TypeScript across the stack: React/Next.js frontends, Node.js/Fastify/PostgreSQL services, real-time systems, and RAG-powered applications.
 
 ## About
 
 - **Name:** Mohsen Mirzaei
-- **Role:** Frontend-Focused Full-Stack Software Engineer
-- **Location:** Isfahan, Iran · Remote (GMT+3:30) · Open to relocation
-- **Experience:** 4+ years building for production; 8 products shipped; 12,000+ users served.
-- **Core stack:** React 19, Next.js 15, TypeScript, TanStack Query/Router, Zustand, Zod, WebSocket, Tailwind CSS, Radix UI, Fastify, PostgreSQL, Redis, pgvector, BullMQ, Docker, Vitest, MSW.
+- **Role:** Full-Stack Engineer · TypeScript / React / Node.js
+- **Location:** Isfahan, Iran · Remote (GMT+3:30) · Open to relocation (EU)
+- **Experience:** 4+ years building for production; 8 products shipped; 14,000+ fintech users served.
+- **Core stack:** React 19, Next.js 15, TypeScript, JavaScript ES2022+, SQL, Go familiar, TanStack Query/Router, Zustand, Zod, WebSocket, Tailwind CSS, Radix UI, Fastify, PostgreSQL, Prisma, Redis, pgvector, BullMQ, Docker, Vitest, MSW, OpenTelemetry, Prometheus, Loki.
 - **Strengths:** real-time WebSocket systems, monorepo architecture (Turborepo + Feature-Sliced Design), RAG/AI product engineering, fintech workflows (KYC, OTP, WebAuthn), observability.
 
 ## Selected Work
 
-- Restaurant Reservation — Full-stack client platform: Next.js marketing site, React customer/admin apps, Fastify REST API; concurrency-safe booking, OTP auth, BullMQ notifications; OpenTelemetry + Docker deployment.
-- RcoinX — Pre-launch crypto exchange: led frontend architecture for a 3-engineer team; Turborepo monorepo, Spot Trading UI, WebSocket pipeline, Storybook design system, Vitest + MSW.
-- Chatomatic — AI SaaS (solo founder): Feature-Sliced Design dashboard, Fastify RAG backend with pgvector, streaming chat layer shared by dashboard and Shadow DOM embed; dual LLM providers.
-- Isopoll — B2B SaaS: typed data layer across 80+ service modules, checkout flow, geolocation, RTL/Persian interface.
-- Propx — Hedge fund client platform: multi-step KYC with video verification, bilingual admin dashboards, support ticketing.
-- HeidaryHa — Fintech PWA serving 12,000+ customers: multi-factor auth (OTP + biometrics), IBAN transfers; 97% satisfaction, +25% applications.
+- Restaurant Reservation Platform — US-client 4-app monorepo: 3 booking channels, 21 customer/admin screens, 8-state lifecycle, transactional slot locking, 77 shared Zod schemas, 72 automated tests, BullMQ notifications, and a 9-service OpenTelemetry/Prometheus/Loki observability stack.
+- RcoinX — Pre-launch crypto exchange: architected frontend from scratch for a 3-engineer team; Turborepo monorepo with 8 shared packages, Spot Trading, 9 REST integrations, 3 WebSocket streams, TOTP/WebAuthn/MFA-gated flows, RTL/LTR Storybook, Vitest + MSW, and Docker CI.
+- Chatomatic — AI assistant SaaS: co-founded and launched to 100+ users; rebuilt end-to-end solo in 2026 with Fastify API, pgvector RAG, 2-phase streaming chat, Shadow DOM embed, and OpenAI/Ollama routing.
+- Isopoll — B2B SaaS: 35K+ LOC, 41-page fully RTL Persian Next.js platform; 85 React Query hooks, 86 typed services, 18 API domains, 41+ Zod schemas.
+- Propx — Hedge fund client platform: 11-step KYC with ID capture and video verification, 18 role-gated screens, 36 REST endpoints, 30 typed hooks, ~1,700 localized strings, and 6 Zod-validated forms.
+- HeidaryHa — Mobile banking PWA serving 14,000+ customers: multi-factor auth, transaction flows, PWA + Android from one React/TypeScript codebase, +40% monthly loan applications.
 - Fastify Observability Stack (open source) — production-grade Fastify API with Prometheus metrics, OpenTelemetry tracing, Loki logs, Grafana dashboards, and 12 k6 load scenarios.
+
+## Deep dives
+
+- Case study — RcoinX real-time spot trading: https://mohsenmirzaei.com/work/rcoinx
+- Case study — Chatomatic AI assistant SaaS: https://mohsenmirzaei.com/work/chatomatic
+- Case study — Reservation platform (zero double-bookings): https://mohsenmirzaei.com/work/reservations
+- Note — A ref-counted WebSocket layer for real-time market data: https://mohsenmirzaei.com/notes/ref-counted-websocket-layer
+- Note — Preventing double-bookings with transactional slot locking: https://mohsenmirzaei.com/notes/transactional-slot-locking
 
 ## Contact
 
-- Email: hello@mohsenmirzaei.com
+- Email: mohsn.mirzaei@gmail.com
 - GitHub: https://github.com/mohsn-mirzaei
 - LinkedIn: https://www.linkedin.com/in/mohsenmirzaeii/
 - Website: https://mohsenmirzaei.com

@@ -10,6 +10,12 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { buildJsonLd } from "@/lib/jsonld";
+import { Cursor } from "@/components/providers/Cursor";
+import { Preloader } from "@/components/providers/Preloader";
+import { TransitionProvider } from "@/components/providers/Transition";
+import { SmoothScroll } from "@/components/providers/SmoothScroll";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -67,8 +73,14 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
+  manifest: "/site.webmanifest",
 };
 
 export const viewport: Viewport = {
@@ -94,12 +106,19 @@ export default function RootLayout({
             crawlers (which don't run JS) and Google can read it. */}
         <script
           type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body suppressHydrationWarning className="noise min-h-dvh bg-ink text-fg">
-        {children}
+        <Cursor />
+        <Preloader />
+        <TransitionProvider>
+          <Header />
+          <SmoothScroll>
+            {children}
+            <Footer />
+          </SmoothScroll>
+        </TransitionProvider>
         <Analytics />
         <SpeedInsights />
       </body>

@@ -20,6 +20,8 @@ export function HeroCanvas() {
     if (prefersReducedMotion()) return;
     const lowPower = (navigator.hardwareConcurrency ?? 4) <= 2;
     if (lowPower) return;
+    // Device capability is only knowable on the client, post-hydration.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCapable(true);
 
     const io = new IntersectionObserver(

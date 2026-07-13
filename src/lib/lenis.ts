@@ -1,7 +1,6 @@
 import type Lenis from "lenis";
 
 declare global {
-  // eslint-disable-next-line no-var
   var __lenis: Lenis | undefined;
 }
 

@@ -7,7 +7,7 @@ export function Contact() {
     <section id="contact" className="section-px scroll-mt-24 py-28 md:py-40">
       <div className="flex flex-col gap-6">
         <Reveal className="flex items-center gap-4">
-          <span className="font-mono text-sm text-accent">05</span>
+          <span className="font-mono text-sm text-accent">07</span>
           <span className="h-px w-10 bg-line-strong" />
           <span className="eyebrow">Contact</span>
         </Reveal>
