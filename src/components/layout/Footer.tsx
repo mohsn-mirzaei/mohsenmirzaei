@@ -16,6 +16,14 @@ export function Footer() {
         </div>
 
         <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-fg-dim">
+          <a
+            className="font-semibold text-accent transition-colors hover:text-fg"
+            href={site.socials.telegram}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Message on Telegram ↗
+          </a>
           <a className="transition-colors hover:text-fg" href={site.socials.github} target="_blank" rel="noopener noreferrer">
             GitHub
           </a>

@@ -39,7 +39,18 @@ export function Contact() {
 
         <div className="lg:col-span-5 lg:justify-self-end">
           <Reveal className="flex flex-col gap-4">
-            <p className="eyebrow mb-2">Elsewhere</p>
+            <a
+              href={site.socials.telegram}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor
+              className="group flex items-center justify-between rounded-full bg-accent px-6 py-4 text-lg font-semibold text-black transition-colors hover:bg-[#e4ff6e]"
+            >
+              Message on Telegram
+              <span className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
+            </a>
+
+            <p className="eyebrow mb-2 mt-4">Elsewhere</p>
             {[
               { label: "GitHub", href: site.socials.github },
               { label: "LinkedIn", href: site.socials.linkedin },

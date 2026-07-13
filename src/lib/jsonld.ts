@@ -50,6 +50,7 @@ export function buildJsonLd() {
           site.socials.github,
           site.socials.linkedin,
           site.socials.x,
+          site.socials.telegram,
         ],
         knowsAbout,
         knowsLanguage: ["English", "Persian"],

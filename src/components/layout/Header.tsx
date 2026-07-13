@@ -228,6 +228,16 @@ export function Header() {
             <span className="eyebrow">{site.location}</span>
             <LocalTime className="font-mono text-xs text-fg-dim" />
           </div>
+          <a
+            href={site.socials.telegram}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-menu-meta
+            className="inline-flex w-fit items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-black transition-colors hover:bg-[#e4ff6e]"
+            tabIndex={menuOpen ? 0 : -1}
+          >
+            Message on Telegram ↗
+          </a>
           <div data-menu-meta className="flex flex-wrap gap-x-6 gap-y-2">
             {[
               { label: "GitHub", href: site.socials.github },

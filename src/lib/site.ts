@@ -18,14 +18,15 @@ export const site = {
   location: "Isfahan, Iran",
   availability:
     "Open to full-stack & senior frontend roles · Remote (GMT+3:30) · Open to relocation (EU)",
-  email: "mohsn.mirzaei@gmail.com",
+  email: "hello@mohsenmirzaei.com",
   url: "https://mohsenmirzaei.com",
   // Authoritative profiles — the SEO/AI "sameAs" graph. Replace handles.
   socials: {
     github: "https://github.com/mohsn-mirzaei",
     linkedin: "https://www.linkedin.com/in/mohsenmirzaeii/",
-    x: "https://x.com/mohsenmirzaei",
-    email: "mailto:mohsn.mirzaei@gmail.com",
+    x: "https://x.com/mohsenmirzaeiii",
+    telegram: "https://t.me/mohsn_mirzaei",
+    email: "mailto:hello@mohsenmirzaei.com",
   },
   // Optional: a downloadable CV placed in /public.
   resumeUrl: "/mohsen-mirzaei-resume.pdf",

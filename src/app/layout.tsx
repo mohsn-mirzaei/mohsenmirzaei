@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     type: "profile",
     firstName: site.firstName,
     lastName: site.lastName,
-    username: "mohsenmirzaei",
+    username: "mohsenmirzaeiii",
     title: `${site.name} — ${site.role}`,
     description: site.tagline,
     url: site.url,
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${site.name} — ${site.role}`,
     description: site.tagline,
-    creator: "@mohsenmirzaei",
+    creator: "@mohsenmirzaeiii",
   },
   robots: {
     index: true,

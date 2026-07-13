@@ -16,6 +16,14 @@ export function HeroActions() {
         <span className="transition-transform duration-300 group-hover:translate-x-1">↓</span>
       </MagneticButton>
       <MagneticButton
+        href={site.socials.telegram}
+        ariaLabel="Message Mohsen on Telegram"
+        className="group inline-flex items-center gap-3 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-black transition-colors hover:bg-[#e4ff6e]"
+      >
+        Message on Telegram
+        <span className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
+      </MagneticButton>
+      <MagneticButton
         href={site.socials.email}
         ariaLabel="Email Mohsen"
         className="inline-flex items-center gap-3 rounded-full border border-line-strong px-7 py-3.5 text-sm font-medium text-fg transition-colors hover:border-accent hover:text-accent"
