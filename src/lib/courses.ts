@@ -89,6 +89,18 @@ export const courseProviders: CourseProvider[] = [
       { title: "The Ultimate TypeScript Course", hours: 5, url: "https://codewithmosh.com/p/the-ultimate-typescript" },
       { title: "The Ultimate JavaScript Series", hours: 10, url: "https://codewithmosh.com/p/ultimate-javascript-series" },
       { title: "The Ultimate HTML5 & CSS3 Series", hours: 14, url: "https://codewithmosh.com/p/the-ultimate-html-css" },
+      {
+        title: "The Ultimate Design Pattern Series",
+        hours: 7,
+        url: "https://codewithmosh.com/p/design-patterns",
+        inProgress: true,
+      },
+      {
+        title: "The Ultimate Data Structures & Algorithms Bundle",
+        hours: 14,
+        url: "https://codewithmosh.com/p/data-structures-algorithms",
+        inProgress: true,
+      },
     ],
   },
 ];
