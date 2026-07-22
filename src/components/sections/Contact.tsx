@@ -1,6 +1,7 @@
 import { site } from "@/lib/site";
 import { Reveal } from "@/components/anim/Reveal";
 import { SplitReveal } from "@/components/anim/SplitReveal";
+import { ContactForm } from "@/components/sections/ContactForm";
 
 export function Contact() {
   return (
@@ -34,6 +35,11 @@ export function Contact() {
               <span className="break-all">{site.email}</span>
               <span className="transition-transform duration-300 group-hover:translate-x-2">→</span>
             </a>
+          </Reveal>
+
+          <Reveal className="mt-12">
+            <p className="eyebrow mb-6">Or send a message directly</p>
+            <ContactForm />
           </Reveal>
         </div>
 

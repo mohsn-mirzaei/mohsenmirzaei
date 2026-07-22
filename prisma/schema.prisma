@@ -1,0 +1,36 @@
+// Prisma schema for the portfolio backend.
+//
+// This currently only models the contact form (`Lead`). Content models
+// (Project, CaseStudy, Article, Testimonial, Experience) and a `locale`
+// column for the eventual EN/FA split are planned for Part 2 of the backend
+// rollout — see /Users/mohsenmirzaei/.claude/plans/tingly-forging-hippo.md.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum LeadStatus {
+  NEW
+  READ
+  REPLIED
+  ARCHIVED
+}
+
+model Lead {
+  id         String     @id @default(cuid())
+  name       String
+  email      String
+  message    String
+  /// The page the contact form was submitted from, e.g. "/", "/work/rcoinx".
+  sourcePath String?
+  status     LeadStatus @default(NEW)
+  createdAt  DateTime   @default(now())
+
+  @@index([email])
+  @@index([createdAt])
+}
