@@ -1,9 +1,9 @@
 // Prisma schema for the portfolio backend.
 //
-// This currently only models the contact form (`Lead`). Content models
-// (Project, CaseStudy, Article, Testimonial, Experience) and a `locale`
-// column for the eventual EN/FA split are planned for Part 2 of the backend
-// rollout — see /Users/mohsenmirzaei/.claude/plans/tingly-forging-hippo.md.
+// Part 1 modeled the contact form (`Lead`). Part 2 adds the content models
+// below (Experience, Project, CaseStudy, Article, Testimonial), each with a
+// `locale` column so the eventual EN/FA split (Part 6) needs no further
+// migration — see /Users/mohsenmirzaei/.claude/plans/purrfect-napping-sun.md.
 
 generator client {
   provider = "prisma-client"
@@ -33,4 +33,153 @@ model Lead {
 
   @@index([email])
   @@index([createdAt])
+}
+
+/// Locale codes use lowercase ISO tags ("en", "fa"), unlike LeadStatus's
+/// SCREAMING_CASE — that's the conventional casing for locale tags, not an
+/// inconsistency. Only "en" is seeded/used until Part 6 (bilingual).
+enum Locale {
+  en
+  fa
+}
+
+model Experience {
+  id         String   @id @default(cuid())
+  /// Stable key derived from company name, e.g. "restaurant-reservation-platform".
+  /// Not used for routing — no per-experience detail page exists — it's an
+  /// idempotent seed/upsert key and a stable admin-editable handle.
+  slug       String
+  locale     Locale   @default(en)
+  company    String
+  role       String
+  period     String
+  summary    String
+  highlights String[]
+  /// { value: string; label: string }[] — small, fixed shape, never queried individually.
+  metrics    Json?
+  stack      String[]
+  link       String?
+  /// Display order, ascending.
+  order      Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([slug, locale])
+  @@index([locale, order])
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  slug        String
+  locale      Locale   @default(en)
+  title       String
+  category    String
+  year        String
+  description String
+  bullets     String[]
+  stack       String[]
+  mediaImage  String
+  mediaAlt    String
+  mediaVideo  String?
+  link        String?
+  repo        String?
+  /// Has a full case study at /work/[slug]. Matched to CaseStudy by slug
+  /// convention — intentionally not a DB relation, nothing joins them today.
+  caseStudy   Boolean  @default(false)
+  featured    Boolean  @default(false)
+  order       Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([slug, locale])
+  @@index([locale, order])
+  @@index([locale, featured])
+}
+
+model CaseStudy {
+  id               String             @id @default(cuid())
+  slug             String
+  locale           Locale             @default(en)
+  title            String
+  eyebrow          String
+  year             String
+  role             String
+  timeline         String
+  team             String
+  intro            String
+  heroMediaSrc     String
+  heroMediaAlt     String
+  heroMediaCaption String?
+  heroMediaVideo   String?
+  /// { value: string; label: string }[]
+  metrics          Json
+  stack            String[]
+  liveUrl          String?
+  repoUrl          String?
+  order            Int
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  sections         CaseStudySection[]
+
+  @@unique([slug, locale])
+  @@index([locale, order])
+}
+
+model CaseStudySection {
+  id           String    @id @default(cuid())
+  caseStudyId  String
+  caseStudy    CaseStudy @relation(fields: [caseStudyId], references: [id], onDelete: Cascade)
+  order        Int
+  kicker       String
+  heading      String
+  body         String[]
+  bullets      String[]
+  mediaSrc     String?
+  mediaAlt     String?
+  mediaCaption String?
+  mediaVideo   String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@unique([caseStudyId, order])
+}
+
+model Article {
+  id          String   @id @default(cuid())
+  slug        String
+  locale      Locale   @default(en)
+  title       String
+  description String
+  date        DateTime @db.Date
+  readingTime String
+  tags        String[]
+  /// ArticleBlock[] discriminated union (p/h2/code/ul/quote) kept as Json —
+  /// variants have incompatible field sets; see src/lib/articles.ts for the
+  /// canonical TS shape this must conform to.
+  blocks      Json
+  order       Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([slug, locale])
+  @@index([locale, date])
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  /// Derived from name, e.g. "hamid-ahmadi" — stable upsert key, no routing use.
+  slug      String
+  locale    Locale   @default(en)
+  quote     String
+  name      String
+  role      String
+  company   String
+  link      String?
+  avatar    String?
+  order     Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([slug, locale])
+  @@index([locale, order])
 }

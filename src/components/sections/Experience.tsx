@@ -1,8 +1,9 @@
-import { experiences } from "@/lib/data";
+import { getExperiences } from "@/lib/content/queries";
 import { Reveal } from "@/components/anim/Reveal";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 
-export function Experience() {
+export async function Experience() {
+  const experiences = await getExperiences();
   return (
     <section id="experience" className="section-px scroll-mt-24 py-28 md:py-40">
       <SectionHeading

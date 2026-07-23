@@ -1,5 +1,6 @@
 import { site } from "@/lib/site";
-import { experiences, skillGroups } from "@/lib/data";
+import { skillGroups } from "@/lib/data";
+import { getExperiences } from "@/lib/content/queries";
 
 /**
  * Builds a connected schema.org @graph (Person + WebSite + ProfilePage).
@@ -9,7 +10,7 @@ import { experiences, skillGroups } from "@/lib/data";
  * is the strongest entity-disambiguation signal — it tells engines "this is the
  * same Mohsen Mirzaei as these authoritative profiles".
  */
-export function buildJsonLd() {
+export async function buildJsonLd() {
   const personId = `${site.url}/#person`;
   const siteId = `${site.url}/#website`;
 
@@ -17,6 +18,7 @@ export function buildJsonLd() {
     new Set(skillGroups.flatMap((g) => g.skills)),
   );
 
+  const experiences = await getExperiences();
   const worksFor = experiences.map((e) => ({
     "@type": "OrganizationRole" as const,
     roleName: e.role,

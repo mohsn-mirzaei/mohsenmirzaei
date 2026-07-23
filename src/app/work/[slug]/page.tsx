@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { caseStudies, getCaseStudy, nextCaseStudy, type CaseMedia } from "@/lib/case-studies";
+import type { CaseMedia } from "@/lib/case-studies";
+import { getCaseStudies, getCaseStudy, getNextCaseStudy } from "@/lib/content/queries";
 import { site } from "@/lib/site";
 import { Reveal } from "@/components/anim/Reveal";
 import { SplitReveal } from "@/components/anim/SplitReveal";
@@ -8,7 +9,11 @@ import { Parallax } from "@/components/anim/Parallax";
 import { StatCounter } from "@/components/anim/StatCounter";
 import { TransitionLink } from "@/components/providers/Transition";
 
-export function generateStaticParams() {
+export const revalidate = 3600;
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const caseStudies = await getCaseStudies();
   return caseStudies.map(({ slug }) => ({ slug }));
 }
 
@@ -18,7 +23,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const cs = getCaseStudy(slug);
+  const cs = await getCaseStudy(slug);
   if (!cs) return {};
   return {
     title: cs.title,
@@ -73,9 +78,9 @@ export default async function CaseStudyPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const cs = getCaseStudy(slug);
+  const cs = await getCaseStudy(slug);
   if (!cs) notFound();
-  const next = nextCaseStudy(slug);
+  const next = await getNextCaseStudy(slug);
 
   return (
     <main className="section-px pt-32 md:pt-40">

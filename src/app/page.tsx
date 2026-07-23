@@ -9,6 +9,8 @@ import { Notes } from "@/components/sections/Notes";
 import { Contact } from "@/components/sections/Contact";
 import { Marquee } from "@/components/anim/Marquee";
 
+export const revalidate = 3600;
+
 export default function Home() {
   return (
     <main>

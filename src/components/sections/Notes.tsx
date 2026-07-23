@@ -1,4 +1,4 @@
-import { articles } from "@/lib/articles";
+import { getArticles } from "@/lib/content/queries";
 import { Reveal } from "@/components/anim/Reveal";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { TransitionLink } from "@/components/providers/Transition";
@@ -9,7 +9,8 @@ const dateFmt = new Intl.DateTimeFormat("en-US", {
   timeZone: "UTC",
 });
 
-export function Notes() {
+export async function Notes() {
+  const articles = await getArticles();
   return (
     <section id="notes" className="section-px scroll-mt-24 py-28 md:py-40">
       <SectionHeading

@@ -1,10 +1,12 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
-import { caseStudies } from "@/lib/case-studies";
-import { articles } from "@/lib/articles";
+import { getCaseStudies, getArticles } from "@/lib/content/queries";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const revalidate = 3600;
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
+  const [caseStudies, articles] = await Promise.all([getCaseStudies(), getArticles()]);
   return [
     {
       url: site.url,

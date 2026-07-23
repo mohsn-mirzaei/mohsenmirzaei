@@ -1,10 +1,11 @@
-import { projects } from "@/lib/data";
+import { getProjects } from "@/lib/content/queries";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { ProjectCard } from "@/components/sections/ProjectCard";
 import { FeaturedRail } from "@/components/sections/FeaturedRail";
 import { Reveal } from "@/components/anim/Reveal";
 
-export function Projects() {
+export async function Projects() {
+  const projects = await getProjects();
   const featured = projects.filter((p) => p.featured);
   const rest = projects.filter((p) => !p.featured);
 

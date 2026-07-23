@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { articles, getArticle, type ArticleBlock } from "@/lib/articles";
+import type { ArticleBlock } from "@/lib/articles";
+import { getArticles, getArticle } from "@/lib/content/queries";
 import { site } from "@/lib/site";
 import { Reveal } from "@/components/anim/Reveal";
 import { SplitReveal } from "@/components/anim/SplitReveal";
 import { TransitionLink } from "@/components/providers/Transition";
 
-export function generateStaticParams() {
+export const revalidate = 3600;
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const articles = await getArticles();
   return articles.map(({ slug }) => ({ slug }));
 }
 
@@ -16,7 +21,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const article = getArticle(slug);
+  const article = await getArticle(slug);
   if (!article) return {};
   return {
     title: article.title,
@@ -91,9 +96,9 @@ export default async function NotePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const article = getArticle(slug);
+  const article = await getArticle(slug);
   if (!article) notFound();
-  const others = articles.filter((a) => a.slug !== slug);
+  const others = (await getArticles()).filter((a) => a.slug !== slug);
 
   const jsonLd = {
     "@context": "https://schema.org",

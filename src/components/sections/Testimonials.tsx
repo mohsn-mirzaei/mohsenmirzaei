@@ -1,10 +1,11 @@
 import Image from "next/image";
-import { testimonials } from "@/lib/data";
+import { getTestimonials } from "@/lib/content/queries";
 import { site } from "@/lib/site";
 import { Reveal } from "@/components/anim/Reveal";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 
-export function Testimonials() {
+export async function Testimonials() {
+  const testimonials = await getTestimonials();
   const [lead, ...rest] = testimonials;
 
   return (
