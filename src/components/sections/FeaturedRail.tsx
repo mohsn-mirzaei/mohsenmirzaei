@@ -6,6 +6,7 @@ import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { MediaFrame } from "@/components/sections/MediaFrame";
 import { TransitionLink } from "@/components/providers/Transition";
 import { Reveal } from "@/components/anim/Reveal";
+import { trackCaseStudyClick, trackProjectLink } from "@/lib/analytics";
 
 /**
  * Featured work as a pinned horizontal rail on desktop (scroll scrubs the
@@ -118,6 +119,7 @@ function FeaturedPanel({ project, index }: { project: Project; index: number }) 
               href={href}
               ariaLabel={`Open case study: ${project.title}`}
               dataCursorLabel={cursorLabel}
+              onClick={() => trackCaseStudyClick(project.slug, "featured")}
             >
               {media}
             </TransitionLink>
@@ -128,6 +130,7 @@ function FeaturedPanel({ project, index }: { project: Project; index: number }) 
               rel={external ? "noopener noreferrer" : undefined}
               aria-label={`Open ${project.title}`}
               data-cursor-label={cursorLabel}
+              onClick={() => trackProjectLink(project.slug, project.link ? "live" : "repo", "featured")}
             >
               {media}
             </a>
@@ -161,6 +164,7 @@ function FeaturedPanel({ project, index }: { project: Project; index: number }) 
             {project.caseStudy && (
               <TransitionLink
                 href={`/work/${project.slug}`}
+                onClick={() => trackCaseStudyClick(project.slug, "featured")}
                 className="group/link inline-flex items-center gap-2 text-sm font-medium text-fg transition-colors hover:text-accent"
               >
                 Case study
@@ -172,6 +176,7 @@ function FeaturedPanel({ project, index }: { project: Project; index: number }) 
                 href={project.repo}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackProjectLink(project.slug, "repo", "featured")}
                 className="group/link inline-flex items-center gap-2 text-sm font-medium text-fg transition-colors hover:text-accent"
               >
                 GitHub

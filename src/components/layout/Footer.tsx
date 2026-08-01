@@ -1,6 +1,9 @@
+"use client";
+
 import { site } from "@/lib/site";
 import { LocalTime } from "@/components/layout/LocalTime";
 import { LogoMark } from "@/components/layout/LogoMark";
+import { trackSocialClick } from "@/lib/analytics";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -21,19 +24,42 @@ export function Footer() {
             href={site.socials.telegram}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackSocialClick("telegram", "footer")}
           >
             Message on Telegram ↗
           </a>
-          <a className="transition-colors hover:text-fg" href={site.socials.github} target="_blank" rel="noopener noreferrer">
+          <a
+            className="transition-colors hover:text-fg"
+            href={site.socials.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackSocialClick("github", "footer")}
+          >
             GitHub
           </a>
-          <a className="transition-colors hover:text-fg" href={site.socials.linkedin} target="_blank" rel="noopener noreferrer">
+          <a
+            className="transition-colors hover:text-fg"
+            href={site.socials.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackSocialClick("linkedin", "footer")}
+          >
             LinkedIn
           </a>
-          <a className="transition-colors hover:text-fg" href={site.socials.x} target="_blank" rel="noopener noreferrer">
+          <a
+            className="transition-colors hover:text-fg"
+            href={site.socials.x}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackSocialClick("x", "footer")}
+          >
             X / Twitter
           </a>
-          <a className="transition-colors hover:text-fg" href={site.socials.email}>
+          <a
+            className="transition-colors hover:text-fg"
+            href={site.socials.email}
+            onClick={() => trackSocialClick("email", "footer")}
+          >
             Email
           </a>
         </nav>

@@ -1,7 +1,10 @@
+"use client";
+
 import { site } from "@/lib/site";
 import { Reveal } from "@/components/anim/Reveal";
 import { SplitReveal } from "@/components/anim/SplitReveal";
 import { ContactForm } from "@/components/sections/ContactForm";
+import { trackSocialClick } from "@/lib/analytics";
 
 export function Contact() {
   return (
@@ -30,6 +33,7 @@ export function Contact() {
             <a
               href={site.socials.email}
               data-cursor
+              onClick={() => trackSocialClick("email", "contact")}
               className="group mt-10 inline-flex items-center gap-4 font-display text-3xl font-semibold tracking-tight text-fg transition-colors hover:text-accent md:text-5xl"
             >
               <span className="break-all">{site.email}</span>
@@ -50,6 +54,7 @@ export function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               data-cursor
+              onClick={() => trackSocialClick("telegram", "contact")}
               className="group flex items-center justify-between rounded-full bg-accent px-6 py-4 text-lg font-semibold text-black transition-colors hover:bg-[#e4ff6e]"
             >
               Message on Telegram
@@ -58,15 +63,16 @@ export function Contact() {
 
             <p className="eyebrow mb-2 mt-4">Elsewhere</p>
             {[
-              { label: "GitHub", href: site.socials.github },
-              { label: "LinkedIn", href: site.socials.linkedin },
-              { label: "X / Twitter", href: site.socials.x },
+              { label: "GitHub", href: site.socials.github, platform: "github" as const },
+              { label: "LinkedIn", href: site.socials.linkedin, platform: "linkedin" as const },
+              { label: "X / Twitter", href: site.socials.x, platform: "x" as const },
             ].map((l) => (
               <a
                 key={l.label}
                 href={l.href}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackSocialClick(l.platform, "contact")}
                 className="group flex items-center justify-between border-b border-line py-4 text-lg text-fg transition-colors hover:border-accent"
               >
                 {l.label}

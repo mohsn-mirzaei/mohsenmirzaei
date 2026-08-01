@@ -62,6 +62,7 @@ export function MagneticButton({
         download={download}
         target={external ? "_blank" : undefined}
         rel={external ? "noopener noreferrer" : undefined}
+        onClick={onClick}
       >
         {children}
       </a>

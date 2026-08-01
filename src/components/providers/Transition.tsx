@@ -140,12 +140,14 @@ export function TransitionLink({
   className,
   ariaLabel,
   dataCursorLabel,
+  onClick,
 }: {
   href: string;
   children: ReactNode;
   className?: string;
   ariaLabel?: string;
   dataCursorLabel?: string;
+  onClick?: () => void;
 }) {
   const { navigate } = usePageTransition();
   return (
@@ -155,6 +157,7 @@ export function TransitionLink({
       data-cursor-label={dataCursorLabel}
       className={className}
       onClick={(e) => {
+        onClick?.();
         // Let modified clicks (new tab etc.) behave natively.
         if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
         e.preventDefault();

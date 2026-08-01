@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   { href: "/admin/articles", label: "Articles" },
   { href: "/admin/testimonials", label: "Testimonials" },
   { href: "/admin/leads", label: "Leads" },
+  { href: "/admin/analytics", label: "Analytics" },
 ];
 
 export default async function DashboardLayout({

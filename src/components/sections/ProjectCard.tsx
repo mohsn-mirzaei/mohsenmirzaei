@@ -5,6 +5,7 @@ import type { Project } from "@/lib/data";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { onSiteReady } from "@/lib/ready";
 import { MediaFrame } from "@/components/sections/MediaFrame";
+import { trackProjectLink } from "@/lib/analytics";
 
 /** Compact card for the non-featured "More work" grid. */
 export function ProjectCard({ project }: { project: Project }) {
@@ -35,6 +36,7 @@ export function ProjectCard({ project }: { project: Project }) {
   };
 
   const href = project.link ?? project.repo;
+  const kind: "live" | "repo" = project.link ? "live" : "repo";
   const cursorLabel = project.repo ? "Open repo ↗" : project.link ? "Visit live ↗" : undefined;
 
   return (
@@ -97,6 +99,7 @@ export function ProjectCard({ project }: { project: Project }) {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackProjectLink(project.slug, kind, "projects")}
           className="absolute inset-0 z-20"
           aria-label={`Open ${project.title}`}
         />

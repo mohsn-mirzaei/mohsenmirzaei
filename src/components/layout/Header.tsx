@@ -10,6 +10,7 @@ import { MagneticButton } from "@/components/anim/MagneticButton";
 import { usePageTransition } from "@/components/providers/Transition";
 import { LocalTime } from "@/components/layout/LocalTime";
 import { LogoMark } from "@/components/layout/LogoMark";
+import { trackSocialClick } from "@/lib/analytics";
 
 const NAV = [
   { label: "Work", id: "work" },
@@ -233,6 +234,7 @@ export function Header() {
             target="_blank"
             rel="noopener noreferrer"
             data-menu-meta
+            onClick={() => trackSocialClick("telegram", "header")}
             className="inline-flex w-fit items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-black transition-colors hover:bg-[#e4ff6e]"
             tabIndex={menuOpen ? 0 : -1}
           >
@@ -240,16 +242,17 @@ export function Header() {
           </a>
           <div data-menu-meta className="flex flex-wrap gap-x-6 gap-y-2">
             {[
-              { label: "GitHub", href: site.socials.github },
-              { label: "LinkedIn", href: site.socials.linkedin },
-              { label: "X / Twitter", href: site.socials.x },
-              { label: "Email", href: site.socials.email },
+              { label: "GitHub", href: site.socials.github, platform: "github" as const },
+              { label: "LinkedIn", href: site.socials.linkedin, platform: "linkedin" as const },
+              { label: "X / Twitter", href: site.socials.x, platform: "x" as const },
+              { label: "Email", href: site.socials.email, platform: "email" as const },
             ].map((l) => (
               <a
                 key={l.label}
                 href={l.href}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackSocialClick(l.platform, "header")}
                 className="text-sm text-fg-dim transition-colors hover:text-accent"
                 tabIndex={menuOpen ? 0 : -1}
               >

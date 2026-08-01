@@ -3,6 +3,7 @@
 import { scrollToId } from "@/lib/lenis";
 import { site } from "@/lib/site";
 import { MagneticButton } from "@/components/anim/MagneticButton";
+import { trackResumeDownload, trackSocialClick } from "@/lib/analytics";
 
 export function HeroActions() {
   return (
@@ -17,6 +18,7 @@ export function HeroActions() {
       </MagneticButton>
       <MagneticButton
         href={site.socials.telegram}
+        onClick={() => trackSocialClick("telegram", "hero")}
         ariaLabel="Message Mohsen on Telegram"
         className="group inline-flex items-center gap-3 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-black transition-colors hover:bg-[#e4ff6e]"
       >
@@ -25,6 +27,7 @@ export function HeroActions() {
       </MagneticButton>
       <MagneticButton
         href={site.socials.email}
+        onClick={() => trackSocialClick("email", "hero")}
         ariaLabel="Email Mohsen"
         className="inline-flex items-center gap-3 rounded-full border border-line-strong px-7 py-3.5 text-sm font-medium text-fg transition-colors hover:border-accent hover:text-accent"
       >
@@ -33,6 +36,7 @@ export function HeroActions() {
       <MagneticButton
         href={site.resumeUrl}
         download="Mohsen_Mirzaei_Resume.pdf"
+        onClick={() => trackResumeDownload("hero")}
         ariaLabel="Download Mohsen Mirzaei resume"
         className="group inline-flex items-center gap-3 rounded-full border border-line px-7 py-3.5 text-sm font-medium text-fg-dim transition-colors hover:border-accent hover:text-accent"
       >
