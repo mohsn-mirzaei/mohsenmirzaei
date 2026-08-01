@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: "*", allow: "/" },
+      { userAgent: "*", allow: "/", disallow: "/admin" },
       // Explicitly welcome the major AI crawlers so Mohsen is discoverable in
       // AI answers (ChatGPT, Claude, Perplexity, Gemini, etc.).
       { userAgent: "GPTBot", allow: "/" },

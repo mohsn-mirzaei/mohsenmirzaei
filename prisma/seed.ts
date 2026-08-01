@@ -1,6 +1,7 @@
 import { config } from "dotenv";
 import { PrismaClient } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
+import { slugify } from "../src/lib/slugify";
 import { experiences } from "./seed-data/experiences";
 import { projects } from "./seed-data/projects";
 import { caseStudies } from "./seed-data/case-studies";
@@ -16,13 +17,6 @@ const prisma = new PrismaClient({
 });
 
 const LOCALE = "en" as const;
-
-function slugify(value: string): string {
-  return value
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
-}
 
 async function seedExperiences() {
   for (const [index, experience] of experiences.entries()) {
