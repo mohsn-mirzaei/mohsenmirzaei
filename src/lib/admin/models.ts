@@ -1,4 +1,4 @@
-import type { Article, CaseStudy, Experience, Project, Testimonial } from "@/generated/prisma/client";
+import type { Article, CaseStudy, CourseProvider, Experience, Project, Testimonial } from "@/generated/prisma/client";
 
 export type AdminFieldType = "text" | "textarea" | "checkbox" | "string-list" | "metric-pairs";
 
@@ -150,6 +150,25 @@ export const articleFields: AdminFieldConfig[] = [
   { name: "date", label: "Date", type: "text", helpText: "YYYY-MM-DD" },
   { name: "readingTime", label: "Reading time", type: "text", helpText: 'e.g. "6 min read"' },
   { name: "tags", label: "Tags", type: "string-list", separator: ",", helpText: "Comma-separated." },
+];
+
+/** Scalar fields only — the course list has its own dedicated editor, not RecordForm's config. */
+export const courseProviderFields: AdminFieldConfig[] = [
+  {
+    name: "slug",
+    label: "Slug",
+    type: "text",
+    optional: true,
+    helpText: "Leave blank to auto-generate from Name.",
+  },
+  { name: "name", label: "Name", type: "text" },
+  { name: "url", label: "Provider URL", type: "text" },
+];
+
+export const courseProviderColumns: AdminColumnConfig<CourseProvider & { courses: unknown[] }>[] = [
+  { header: "Name", accessor: (row) => row.name },
+  { header: "URL", accessor: (row) => row.url },
+  { header: "Courses", accessor: (row) => String(row.courses.length) },
 ];
 
 export const articleColumns: AdminColumnConfig<Article>[] = [

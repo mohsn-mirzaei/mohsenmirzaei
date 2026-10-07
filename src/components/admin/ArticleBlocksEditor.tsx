@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { TextField, TextAreaField } from "@/components/admin/ControlledFields";
+import { useDragReorder } from "@/lib/admin/use-drag-reorder";
 
 export type ArticleBlockDraft =
   | { type: "p"; text: string }
@@ -65,24 +66,39 @@ export function ArticleBlocksEditor({
     });
   }
 
+  const { draggedIndex, dragHandleProps, dropTargetProps } = useDragReorder(setBlocks);
+
   return (
     <div className="flex flex-col gap-8">
       <input type="hidden" name={name} value={JSON.stringify(blocks)} readOnly />
 
       {blocks.map((block, index) => (
-        <div key={index} className="flex flex-col gap-4 rounded-2xl border border-line p-6">
+        <div
+          key={index}
+          {...dropTargetProps(index)}
+          className={`flex flex-col gap-4 rounded-2xl border border-line p-6 ${draggedIndex === index ? "opacity-40" : ""}`}
+        >
           <div className="flex items-center justify-between">
-            <select
-              value={block.type}
-              onChange={(e) => changeType(index, e.target.value as BlockType)}
-              className="border-b border-line bg-transparent py-1 text-sm text-fg outline-none focus:border-accent"
-            >
-              {BLOCK_TYPES.map((t) => (
-                <option key={t} value={t} className="bg-ink-soft">
-                  {t}
-                </option>
-              ))}
-            </select>
+            <div className="flex items-center gap-2">
+              <span
+                {...dragHandleProps(index)}
+                title="Drag to reorder"
+                className="cursor-grab select-none text-fg-dim hover:text-fg active:cursor-grabbing"
+              >
+                ⠿
+              </span>
+              <select
+                value={block.type}
+                onChange={(e) => changeType(index, e.target.value as BlockType)}
+                className="border-b border-line bg-transparent py-1 text-sm text-fg outline-none focus:border-accent"
+              >
+                {BLOCK_TYPES.map((t) => (
+                  <option key={t} value={t} className="bg-ink-soft">
+                    {t}
+                  </option>
+                ))}
+              </select>
+            </div>
             <div className="flex items-center gap-2">
               <button
                 type="button"

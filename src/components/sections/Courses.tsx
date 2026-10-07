@@ -1,19 +1,20 @@
-import { courseProviders } from "@/lib/courses";
+import { getCourseProviders } from "@/lib/content/queries";
 import { Reveal } from "@/components/anim/Reveal";
 import { StatCounter } from "@/components/anim/StatCounter";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 
-const allCourses = courseProviders.flatMap((p) => p.courses);
-const totalHours = Math.round(allCourses.reduce((sum, c) => sum + c.hours, 0));
-const inProgressCount = allCourses.filter((c) => c.inProgress).length;
+export async function Courses() {
+  const courseProviders = await getCourseProviders();
+  const allCourses = courseProviders.flatMap((p) => p.courses);
+  const totalHours = Math.round(allCourses.reduce((sum, c) => sum + c.hours, 0));
+  const inProgressCount = allCourses.filter((c) => c.inProgress).length;
 
-const courseStats = [
-  { value: `${allCourses.length}`, label: "Courses taken" },
-  { value: `${totalHours}+`, label: "Hours of training" },
-  { value: `${inProgressCount}`, label: "In progress now" },
-];
+  const courseStats = [
+    { value: `${allCourses.length}`, label: "Courses taken" },
+    { value: `${totalHours}+`, label: "Hours of training" },
+    { value: `${inProgressCount}`, label: "In progress now" },
+  ];
 
-export function Courses() {
   return (
     <section id="courses" className="section-px scroll-mt-24 py-28 md:py-40">
       <SectionHeading

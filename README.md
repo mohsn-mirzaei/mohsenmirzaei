@@ -13,15 +13,18 @@ An award-worthy, interactive personal portfolio built for **maximum discoverabil
 ```bash
 pnpm install
 pnpm dev      # http://localhost:3000
-pnpm build    # production build (fully static)
+pnpm test
+pnpm build    # applies pending migrations, then builds
 pnpm start    # serve the production build
 ```
 
+Copy `example.env` to `.env.local` and fill in Postgres, Resend, admin login, and Upstash.
+
 ## Why it ranks (SEO + AI discoverability)
 
-Everything a crawler needs is in the **server-rendered HTML** — the page is fully
-static (`○ Static`), so non-JS bots (GPTBot, ClaudeBot, PerplexityBot, Googlebot)
-see all content and structured data immediately.
+Everything a crawler needs is in the **server-rendered HTML**. The marketing
+pages revalidate hourly, so non-JS bots (GPTBot, ClaudeBot, PerplexityBot,
+Googlebot) see content and structured data without running client JavaScript.
 
 - **JSON-LD `@graph`** (`Person` + `WebSite` + `ProfilePage`) in the initial HTML,
   with `sameAs` links — the single strongest "this is the same person" signal for
@@ -45,18 +48,16 @@ see all content and structured data immediately.
 | What | Where |
 | --- | --- |
 | Name, role, email, social links, domain | `src/lib/site.ts` |
-| Experience, projects, skills, stats | `src/lib/data.ts` |
+| Experience, projects, case studies, articles, testimonials, courses | Admin at `/admin` (Postgres) |
+| Skills, stats, about pillars | `src/lib/data.ts` |
 | Colors, fonts, motion tokens | `src/app/globals.css` (`@theme`) |
 | Portrait photo | `public/images/mohsen-portrait.jpg` |
+| CV | `public/mohsen-mirzaei-resume.pdf` |
 | AI index | `public/llms.txt` |
-
-> **Before deploying:** confirm the `period` dates in `src/lib/data.ts` and keep
-> `src/lib/site.ts` in sync (canonical URL, social links, email). Optionally drop
-> a CV at `public/mohsen-mirzaei-resume.pdf`.
 
 ## Deploy
 
-Designed for Vercel (zero-config). Push to a repo and import, or:
+`pnpm build` runs `prisma migrate deploy` before `next build`. On Vercel, set the variables from `example.env` (Postgres is required at build time). Push to the connected repo, or:
 
 ```bash
 pnpm build && pnpm start

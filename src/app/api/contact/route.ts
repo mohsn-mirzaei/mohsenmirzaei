@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db/client";
 import { sendLeadNotification } from "@/lib/email";
 import { contactRequestSchema } from "@/lib/contact-schema";
+import { checkIpRateLimit } from "@/lib/rate-limit";
 
 /** Reject submissions filled in faster than a human plausibly could. */
 const MIN_FILL_TIME_MS = 1500;
@@ -32,6 +33,15 @@ export async function POST(request: Request) {
   const filledTooFast = Date.now() - formStartedAt < MIN_FILL_TIME_MS;
   if (company || filledTooFast) {
     return NextResponse.json({ ok: true });
+  }
+
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  const { success: ipAllowed } = await checkIpRateLimit(ip);
+  if (!ipAllowed) {
+    return NextResponse.json(
+      { ok: false, error: "Too many messages sent recently — please try again later." },
+      { status: 429 },
+    );
   }
 
   const recentCount = await prisma.lead.count({

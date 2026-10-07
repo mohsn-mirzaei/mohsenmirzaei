@@ -134,3 +134,23 @@ export const articleSchema = z.object({
 export type ArticleValues = z.infer<typeof articleSchema>;
 
 export const leadStatusSchema = z.enum(["NEW", "READ", "REPLIED", "ARCHIVED"]);
+
+export const courseSchema = z.object({
+  title: z.string().trim().min(1, "Title is required."),
+  hours: z.number().positive("Hours must be greater than zero."),
+  url: z.string().trim().min(1, "URL is required."),
+  free: z.boolean(),
+  inProgress: z.boolean(),
+  highlights: z.array(z.string().trim().min(1)).optional(),
+});
+
+export type CourseValues = z.infer<typeof courseSchema>;
+
+export const courseProviderSchema = z.object({
+  slug: slugField,
+  name: z.string().trim().min(1, "Name is required."),
+  url: z.string().trim().min(1, "URL is required."),
+  courses: z.array(courseSchema).min(1, "At least one course is required."),
+});
+
+export type CourseProviderValues = z.infer<typeof courseProviderSchema>;

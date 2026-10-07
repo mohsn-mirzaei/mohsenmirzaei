@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { TextField, TextAreaField } from "@/components/admin/ControlledFields";
+import { useDragReorder } from "@/lib/admin/use-drag-reorder";
 
 export interface CaseStudySectionDraft {
   kicker: string;
@@ -60,15 +61,30 @@ export function CaseStudySectionsEditor({
     });
   }
 
+  const { draggedIndex, dragHandleProps, dropTargetProps } = useDragReorder(setSections);
+
   return (
     <div className="flex flex-col gap-8">
       {/* Serialized on every change so the surrounding <form>'s single submit carries the whole array. */}
       <input type="hidden" name={name} value={JSON.stringify(sections)} readOnly />
 
       {sections.map((section, index) => (
-        <div key={index} className="flex flex-col gap-4 rounded-2xl border border-line p-6">
+        <div
+          key={index}
+          {...dropTargetProps(index)}
+          className={`flex flex-col gap-4 rounded-2xl border border-line p-6 ${draggedIndex === index ? "opacity-40" : ""}`}
+        >
           <div className="flex items-center justify-between">
-            <p className="eyebrow">Section {index + 1}</p>
+            <div className="flex items-center gap-2">
+              <span
+                {...dragHandleProps(index)}
+                title="Drag to reorder"
+                className="cursor-grab select-none text-fg-dim hover:text-fg active:cursor-grabbing"
+              >
+                ⠿
+              </span>
+              <p className="eyebrow">Section {index + 1}</p>
+            </div>
             <div className="flex items-center gap-2">
               <button
                 type="button"

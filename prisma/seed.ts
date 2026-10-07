@@ -7,6 +7,7 @@ import { projects } from "./seed-data/projects";
 import { caseStudies } from "./seed-data/case-studies";
 import { articles } from "./seed-data/articles";
 import { testimonials } from "./seed-data/testimonials";
+import { courseProviders } from "./seed-data/courses";
 
 // tsx runs this file standalone (not through the Prisma CLI's own env
 // loading via prisma.config.ts), so DATABASE_URL needs loading explicitly.
@@ -161,12 +162,41 @@ async function seedTestimonials() {
   }
 }
 
+async function seedCourseProviders() {
+  for (const [index, provider] of courseProviders.entries()) {
+    const slug = slugify(provider.name);
+    const data = { slug, name: provider.name, url: provider.url, order: index };
+    const row = await prisma.courseProvider.upsert({
+      where: { slug },
+      create: data,
+      update: data,
+    });
+
+    // Courses have no natural key beyond (providerId, order) — delete +
+    // recreate is simpler and equally idempotent as a per-row upsert.
+    await prisma.course.deleteMany({ where: { providerId: row.id } });
+    await prisma.course.createMany({
+      data: provider.courses.map((course, courseIndex) => ({
+        providerId: row.id,
+        order: courseIndex,
+        title: course.title,
+        hours: course.hours,
+        url: course.url,
+        free: course.free ?? false,
+        inProgress: course.inProgress ?? false,
+        highlights: course.highlights ?? [],
+      })),
+    });
+  }
+}
+
 async function main() {
   await seedExperiences();
   await seedProjects();
   await seedCaseStudies();
   await seedArticles();
   await seedTestimonials();
+  await seedCourseProviders();
 }
 
 main()

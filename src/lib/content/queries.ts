@@ -2,6 +2,7 @@ import { prisma } from "@/lib/db/client";
 import type { Experience, Project, Testimonial } from "@/lib/data";
 import type { CaseStudy, CaseSection } from "@/lib/case-studies";
 import type { Article } from "@/lib/articles";
+import type { CourseProvider } from "@/lib/courses";
 
 /**
  * The only place that talks to Prisma for content. Every function returns
@@ -161,6 +162,26 @@ export async function getArticles(): Promise<Article[]> {
     readingTime: row.readingTime,
     tags: row.tags,
     blocks: row.blocks as Article["blocks"],
+  }));
+}
+
+/** English-only — no `locale` column on CourseProvider/Course, see schema.prisma. */
+export async function getCourseProviders(): Promise<CourseProvider[]> {
+  const rows = await prisma.courseProvider.findMany({
+    orderBy: { order: "asc" },
+    include: { courses: { orderBy: { order: "asc" } } },
+  });
+  return rows.map((row) => ({
+    name: row.name,
+    url: row.url,
+    courses: row.courses.map((course) => ({
+      title: course.title,
+      hours: course.hours,
+      url: course.url,
+      free: course.free,
+      inProgress: course.inProgress,
+      highlights: course.highlights.length > 0 ? course.highlights : undefined,
+    })),
   }));
 }
 

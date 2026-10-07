@@ -31,6 +31,28 @@ export function TextField({
   );
 }
 
+export function CheckboxField({
+  label,
+  checked,
+  onChange,
+}: {
+  label: string;
+  checked: boolean;
+  onChange: (checked: boolean) => void;
+}) {
+  return (
+    <label className="flex items-center gap-3 text-sm text-fg">
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={(e) => onChange(e.target.checked)}
+        className="h-4 w-4 rounded border-line accent-accent"
+      />
+      {label}
+    </label>
+  );
+}
+
 export function TextAreaField({
   label,
   value,

@@ -3,15 +3,23 @@ import { prisma } from "@/lib/db/client";
 import { LOCALE } from "@/lib/admin/crud-helpers";
 
 export default async function AdminDashboardPage() {
-  const [experienceCount, projectCount, caseStudyCount, articleCount, testimonialCount, leadCounts] =
-    await Promise.all([
-      prisma.experience.count({ where: { locale: LOCALE } }),
-      prisma.project.count({ where: { locale: LOCALE } }),
-      prisma.caseStudy.count({ where: { locale: LOCALE } }),
-      prisma.article.count({ where: { locale: LOCALE } }),
-      prisma.testimonial.count({ where: { locale: LOCALE } }),
-      prisma.lead.groupBy({ by: ["status"], _count: true }),
-    ]);
+  const [
+    experienceCount,
+    projectCount,
+    caseStudyCount,
+    articleCount,
+    testimonialCount,
+    courseCount,
+    leadCounts,
+  ] = await Promise.all([
+    prisma.experience.count({ where: { locale: LOCALE } }),
+    prisma.project.count({ where: { locale: LOCALE } }),
+    prisma.caseStudy.count({ where: { locale: LOCALE } }),
+    prisma.article.count({ where: { locale: LOCALE } }),
+    prisma.testimonial.count({ where: { locale: LOCALE } }),
+    prisma.courseProvider.count(),
+    prisma.lead.groupBy({ by: ["status"], _count: true }),
+  ]);
 
   const newLeads = leadCounts.find((l) => l.status === "NEW")?._count ?? 0;
   const totalLeads = leadCounts.reduce((sum, l) => sum + l._count, 0);
@@ -22,6 +30,7 @@ export default async function AdminDashboardPage() {
     { label: "Case studies", count: caseStudyCount, href: "/admin/case-studies" },
     { label: "Articles", count: articleCount, href: "/admin/articles" },
     { label: "Testimonials", count: testimonialCount, href: "/admin/testimonials" },
+    { label: "Courses", count: courseCount, href: "/admin/courses" },
   ];
 
   return (
