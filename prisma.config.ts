@@ -10,7 +10,15 @@ config({ path: ".env.local" });
  * Prisma 7 config: connection URL used by `prisma migrate`/`prisma studio`.
  * Runtime queries go through the driver adapter in src/lib/db/client.ts
  * instead — see https://pris.ly/d/config-datasource.
+ *
+ * Migrations need the direct (unpooled) host. The `-pooler` URL is for the
+ * app at runtime and rejects or drops long-lived schema commands.
  */
+const migrationUrl =
+  process.env.DATABASE_URL_UNPOOLED ||
+  process.env.POSTGRES_URL_NON_POOLING ||
+  env("DATABASE_URL");
+
 export default defineConfig({
   schema: "prisma/schema.prisma",
   migrations: {
@@ -18,6 +26,6 @@ export default defineConfig({
     seed: "tsx prisma/seed.ts",
   },
   datasource: {
-    url: env("DATABASE_URL"),
+    url: migrationUrl,
   },
 });
