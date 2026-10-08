@@ -161,6 +161,5 @@ export const projects: Project[] = [
       video: "/videos/builder-canvas.mp4",
     },
     caseStudy: true,
-    featured: true,
   },
 ];

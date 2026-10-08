@@ -5,7 +5,8 @@ import type { Project } from "@/lib/data";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { onSiteReady } from "@/lib/ready";
 import { MediaFrame } from "@/components/sections/MediaFrame";
-import { trackProjectLink } from "@/lib/analytics";
+import { TransitionLink } from "@/components/providers/Transition";
+import { trackCaseStudyClick, trackProjectLink } from "@/lib/analytics";
 
 /** Compact card for the non-featured "More work" grid. */
 export function ProjectCard({ project }: { project: Project }) {
@@ -35,9 +36,15 @@ export function ProjectCard({ project }: { project: Project }) {
     e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
   };
 
-  const href = project.link ?? project.repo;
+  const externalHref = project.link ?? project.repo;
   const kind: "live" | "repo" = project.link ? "live" : "repo";
-  const cursorLabel = project.repo ? "Open repo ↗" : project.link ? "Visit live ↗" : undefined;
+  const cursorLabel = project.caseStudy
+    ? "View case →"
+    : project.repo
+      ? "Open repo ↗"
+      : project.link
+        ? "Visit live ↗"
+        : undefined;
 
   return (
     <article
@@ -94,15 +101,26 @@ export function ProjectCard({ project }: { project: Project }) {
         </div>
       </div>
 
-      {href && (
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => trackProjectLink(project.slug, kind, "projects")}
+      {project.caseStudy ? (
+        <TransitionLink
+          href={`/work/${project.slug}`}
+          onClick={() => trackCaseStudyClick(project.slug, "projects")}
           className="absolute inset-0 z-20"
-          aria-label={`Open ${project.title}`}
-        />
+          ariaLabel={`Open case study: ${project.title}`}
+        >
+          <span className="sr-only">{project.title}</span>
+        </TransitionLink>
+      ) : (
+        externalHref && (
+          <a
+            href={externalHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackProjectLink(project.slug, kind, "projects")}
+            className="absolute inset-0 z-20"
+            aria-label={`Open ${project.title}`}
+          />
+        )
       )}
     </article>
   );
