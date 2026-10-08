@@ -344,9 +344,11 @@ export const caseStudies: CaseStudy[] = [
     intro:
       "A US restaurant group ran event-hall, catering, and table bookings over the phone — three intake channels, one paper-adjacent process, and regular double-bookings. I replaced it with a 4-app platform where double-booking is structurally impossible.",
     heroMedia: {
-      src: "/images/projects/reservations.svg",
-      alt: "Reservation platform — availability calendar and booking flow for event halls and tables",
-      caption: "PLACEHOLDER — replace with a real booking-flow screenshot.",
+      src: "/images/projects/reservations.png",
+      alt: "Event hall booking — October calendar with the evening session reserved and afternoon still open",
+      caption:
+        "Premium plan, Saturday the 17th. Evening is taken, afternoon is open. Eighty guests, the Live Station buffet, then the phone number and the six-digit code.",
+      video: "/videos/reservations-flow.mp4",
     },
     metrics: [
       { value: "0", label: "double-bookings under load" },
@@ -384,31 +386,102 @@ export const caseStudies: CaseStudy[] = [
         media: {
           src: "/images/projects/reservations-lifecycle.svg",
           alt: "State diagram of the 8-state reservation lifecycle with locking at the transition boundary",
-          caption: "The reservation state machine. PLACEHOLDER diagram — replace with a polished export.",
+          caption:
+            "Draft and awaiting orders belong to guest-order tables. Halls, catering, and hosted tables enter at pending. The slot row is locked before the insert.",
         },
       },
       {
-        kicker: "03 — Contracts",
+        kicker: "03 — The floor",
+        heading: "The month, then the decision",
+        body: [
+          "The admin calendar marks every day that already holds a hall booking. The table under it is the queue: pending review, confirmed, rejected, with the session and the guest count on the row.",
+          "Accepting one opens the reservation, then a second dialog. The copy on that dialog is the invariant: confirm it, and the selected time slot will be locked. Decline and cancel ask for a reason. Completed is a dead end.",
+        ],
+        media: {
+          src: "/images/projects/reservations-admin.png",
+          alt: "Admin event hall calendar for October with confirmed and pending reservations in the queue",
+          caption:
+            "Dots are days with a booking. The recording opens the Sunday pending review and stops on the lock.",
+          video: "/videos/reservations-confirm.mp4",
+        },
+      },
+      {
+        kicker: "04 — Catering",
+        heading: "The menu is quoted after review",
+        body: [
+          "Catering is the second channel on the same lifecycle. The guest builds a tray — koobideh, joojeh, fesenjan — and the card does not show a price. The number is written later, on the admin copy of that same order.",
+        ],
+        media: {
+          src: "/images/projects/reservations-catering.png",
+          alt: "Catering menu with Chelo Kebab Koobideh and Joojeh Kebab added, prices withheld until review",
+          caption:
+            "One koobideh, one joojeh. Pricing provided after review, on purpose.",
+        },
+      },
+      {
+        kicker: "05 — Quote",
+        heading: "Tax and delivery are typed on the order",
+        body: [
+          "The catalog rate is only a starting point. Three servings of koobideh at $24.99 and two of joojeh at $22.99 are already on the line. Tax and the delivery fee are what the admin adds. Send and confirm writes the total and moves the reservation to confirmed — a catering order does not confirm itself.",
+        ],
+        media: {
+          src: "/images/projects/reservations-estimate.png",
+          alt: "Send Estimate dialog pricing three koobideh and two joojeh, with 8% tax and a $45 delivery fee",
+          caption:
+            "8% tax, $45 to Mercer Street. The total lands at $175.63, and that button is what confirms it.",
+          video: "/videos/reservations-estimate.mp4",
+        },
+      },
+      {
+        kicker: "06 — Tables",
+        heading: "A table is a time, then a mode",
+        body: [
+          "Table booking starts on the same kind of calendar, then a time. 19:00 is the first sitting. After that the host either orders for the group, or invites guests to order on their own link — draft, then awaiting orders, then the same pending review as the hall.",
+        ],
+        media: {
+          src: "/images/projects/reservations-table.png",
+          alt: "Table reservation calendar with Saturday the 17th selected and 19:00 chosen",
+          caption: "Saturday the 17th, 19:00. The next step is who orders.",
+        },
+      },
+      {
+        kicker: "07 — Phone",
+        heading: "Catering, with a fingertip",
+        body: [
+          "The phone walk is the other channel. A delivery date, then dinner, then the dishes. Each tap leaves a ring on the control it hits. The cards still withhold the price.",
+        ],
+        media: {
+          src: "/images/projects/reservations-mobile.png",
+          alt: "Phone catering menu with koobideh and joojeh added, and a touch ring on the plus control",
+          caption:
+            "Dinner, two koobideh and a joojeh, then the same six-digit code. The ring is the tap.",
+          video: "/videos/reservations-mobile.mp4",
+        },
+      },
+      {
+        kicker: "08 — Contracts",
         heading: "One schema, both sides of the wire",
         body: [
           "The monorepo shares 77 Zod schemas between the Fastify API and all frontend apps — every request validated at the edge, every response typed at the client, one definition each. 72 automated tests cover auth, booking, and audit paths, including concurrency tests that hammer the same slot from parallel connections.",
         ],
       },
       {
-        kicker: "04 — Operations",
+        kicker: "09 — Operations",
         heading: "Slow paths off the request, eyes on production",
         body: [
           "Confirmations and reminders (Twilio SMS, Resend email) run through BullMQ workers, off the HTTP path — a booking never waits on a text message, and a Twilio outage degrades notifications, not bookings.",
           "The platform ships with a 9-service observability stack — OpenTelemetry traces, Prometheus metrics, Loki logs, Grafana on top — targeting p95 under 500ms. For a solo-built system, dashboards are the second engineer.",
         ],
         media: {
-          src: "/images/projects/observability.svg",
-          alt: "Grafana dashboard with correlated metrics, logs, and traces for the reservation API",
-          caption: "PLACEHOLDER — replace with a real Grafana screenshot.",
+          src: "/images/projects/observability.png",
+          alt: "Grafana dashboard with per-route latency, throughput, logs, and a trace whose database span is most of the request",
+          caption:
+            "Seven routes, p95 under 10ms, and the trace for GET /v1/catalog/sessions. The database span is 16ms of the 17.",
+          video: "/videos/observability.mp4",
         },
       },
       {
-        kicker: "05 — Outcome",
+        kicker: "10 — Outcome",
         heading: "Phone intake, retired",
         body: [
           "21 customer and admin screens now handle all three booking channels self-service. Under load tests hammering identical slots, double-bookings: zero. The interesting part isn't the zero — it's that the design makes any other number impossible.",

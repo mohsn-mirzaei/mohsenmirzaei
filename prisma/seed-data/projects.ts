@@ -77,8 +77,9 @@ export const projects: Project[] = [
       "Docker",
     ],
     media: {
-      image: "/images/projects/reservations.svg",
-      alt: "Reservation platform — availability calendar and booking flow for event halls and tables",
+      image: "/images/projects/reservations.png",
+      alt: "Event hall booking — October calendar with the evening session reserved and afternoon still open",
+      video: "/videos/reservations-flow.mp4",
     },
     caseStudy: true,
     featured: true,
@@ -108,7 +109,7 @@ export const projects: Project[] = [
       "k6",
     ],
     media: {
-      image: "/images/projects/observability.svg",
+      image: "/images/projects/observability.png",
       alt: "Grafana dashboard with correlated metrics, logs, and distributed traces for a Fastify API",
     },
     repo: "https://github.com/mohsn-mirzaei/fastify-observability",
