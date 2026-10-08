@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">App builder develop and production pipeline</title>
+  <desc id="desc">The canvas edits a screen schema. Save writes develop. Merge copies it to production. Build downloads that version.</desc>
+  <rect width="1200" height="760" fill="#08080a"/>
+  <text x="48" y="56" fill="#d6ff3f" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="3.2">SCREEN SCHEMA</text>
+  <text x="48" y="98" fill="#ededed" font-family="ui-sans-serif, system-ui, sans-serif" font-size="32" font-weight="600">Save develop. Merge. Then build.</text>
+  <text x="48" y="132" fill="#82827c" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">The canvas edits JSON. Production renders that JSON. The studio never writes component source.</text>
+
+  <g fill="none" stroke="#d6ff3f" stroke-width="1.5" opacity="0.85">
+    <path d="M392 430 H422"/>
+    <path d="M778 430 H808"/>
+  </g>
+  <g fill="#d6ff3f">
+    <path d="M422 430 l-8 -4.5 v9 z"/>
+    <path d="M808 430 l-8 -4.5 v9 z"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <rect x="48" y="176" width="344" height="470" rx="16" fill="#141418" stroke="rgba(245,245,240,0.10)"/>
+    <text x="72" y="214" fill="#d6ff3f" font-size="13" letter-spacing="2">01</text>
+    <text x="104" y="214" fill="#ededed" font-size="15" letter-spacing="1.4">COMPOSE</text>
+    <text x="72" y="242" fill="#82827c" font-size="12">up to 6 screens · 10 layouts</text>
+
+    <rect x="72" y="268" width="296" height="56" rx="12" fill="#0e0e11" stroke="rgba(214,255,63,0.35)"/>
+    <text x="90" y="292" fill="#ededed" font-size="14">Banner · slideshow</text>
+    <text x="90" y="310" fill="#6f6f69" font-size="12">title, autoplay, module</text>
+
+    <rect x="72" y="336" width="296" height="56" rx="12" fill="#0e0e11" stroke="rgba(245,245,240,0.10)"/>
+    <text x="90" y="360" fill="#ededed" font-size="14">List · categories</text>
+    <text x="90" y="378" fill="#6f6f69" font-size="12">horizontal, image, backdrop</text>
+
+    <rect x="72" y="404" width="296" height="56" rx="12" fill="#0e0e11" stroke="rgba(245,245,240,0.10)"/>
+    <text x="90" y="428" fill="#ededed" font-size="14">List · products</text>
+    <text x="90" y="446" fill="#6f6f69" font-size="12">bound to a catalog module</text>
+
+    <rect x="72" y="472" width="296" height="56" rx="12" fill="#0e0e11" stroke="rgba(245,245,240,0.10)"/>
+    <text x="90" y="496" fill="#ededed" font-size="14">Web view</text>
+    <text x="90" y="514" fill="#6f6f69" font-size="12">url, height, auth gate</text>
+
+    <text x="72" y="568" fill="#82827c" font-size="12">ORDER IS THE SCHEMA</text>
+    <text x="72" y="596" fill="#ededed" font-size="18">screen.blocks[]</text>
+    <text x="72" y="620" fill="#6f6f69" font-size="12">type + extraAttributes</text>
+
+    <rect x="428" y="176" width="350" height="470" rx="16" fill="#141418" stroke="rgba(214,255,63,0.45)"/>
+    <text x="452" y="214" fill="#d6ff3f" font-size="13" letter-spacing="2">02</text>
+    <text x="484" y="214" fill="#ededed" font-size="15" letter-spacing="1.4">DEVELOP</text>
+    <text x="452" y="242" fill="#82827c" font-size="12">the only version that accepts a drop</text>
+
+    <g fill="#d6ff3f">
+      <circle cx="468" cy="292" r="4"/>
+      <circle cx="468" cy="348" r="4"/>
+      <circle cx="468" cy="404" r="4"/>
+      <circle cx="468" cy="460" r="4"/>
+    </g>
+    <text x="488" y="297" fill="#ededed" font-size="15">Save develop</text>
+    <text x="488" y="353" fill="#ededed" font-size="15">Properties stay open</text>
+    <text x="488" y="409" fill="#ededed" font-size="15">Blocks reorder by drop</text>
+    <text x="488" y="465" fill="#ededed" font-size="15">Name, color, light and dark</text>
+
+    <rect x="452" y="508" width="302" height="96" rx="12" fill="#0e0e11" stroke="rgba(214,255,63,0.28)"/>
+    <text x="472" y="542" fill="#d6ff3f" font-size="12" letter-spacing="1.6">EDITABLE</text>
+    <text x="472" y="572" fill="#ededed" font-size="16">home_page_edit</text>
+
+    <rect x="814" y="176" width="338" height="470" rx="16" fill="#141418" stroke="rgba(245,245,240,0.10)"/>
+    <text x="838" y="214" fill="#d6ff3f" font-size="13" letter-spacing="2">03</text>
+    <text x="870" y="214" fill="#ededed" font-size="15" letter-spacing="1.4">PRODUCTION</text>
+    <text x="838" y="242" fill="#82827c" font-size="12">read-only until the next merge</text>
+
+    <g fill="#4a4a50">
+      <circle cx="854" cy="292" r="4"/>
+      <circle cx="854" cy="348" r="4"/>
+    </g>
+    <g fill="#d6ff3f">
+      <circle cx="854" cy="404" r="4"/>
+      <circle cx="854" cy="460" r="4"/>
+    </g>
+    <text x="874" y="297" fill="#82827c" font-size="15">Drops refused</text>
+    <text x="874" y="353" fill="#82827c" font-size="15">Properties closed</text>
+    <text x="874" y="409" fill="#ededed" font-size="15">Merge from develop</text>
+    <text x="874" y="465" fill="#ededed" font-size="15">Build, then download</text>
+
+    <rect x="838" y="508" width="290" height="96" rx="12" fill="#0e0e11" stroke="rgba(245,245,240,0.10)"/>
+    <text x="858" y="542" fill="#82827c" font-size="12" letter-spacing="1.6">WHAT SHIPS</text>
+    <text x="858" y="572" fill="#ededed" font-size="16">home_page</text>
+  </g>
+
+  <text x="48" y="702" fill="#6f6f69" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14">Restore copies production back onto develop. A published screen cannot be nudged by accident.</text>
+</svg>

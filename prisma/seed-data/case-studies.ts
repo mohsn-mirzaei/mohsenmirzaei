@@ -231,6 +231,109 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
+    slug: "no-code-builders",
+    title: "No-Code App Builder",
+    eyebrow: "Product · React Native",
+    year: "2024",
+    role: "Full-Stack Engineer",
+    timeline: "8 months",
+    team: "On-site product team · I owned the builder",
+    intro:
+      "The people who knew what the app should say could not ship a React Native screen. I built the studio they used instead: drop blocks on a phone, name it, pick a color, merge to production, and download the build. The Lumen home in these recordings is the data the demo opens on.",
+    heroMedia: {
+      src: "/images/projects/builder.png",
+      alt: "App Builder with a Lumen home screen on the phone — slideshow, categories, and a product row",
+      caption:
+        "After the blocks land, the element panel renames the banner. New arrivals is that edit, on the phone.",
+      video: "/videos/builder-canvas.mp4",
+    },
+    metrics: [
+      { value: "10", label: "block layouts on the canvas" },
+      { value: "6", label: "screens in one app" },
+      { value: "2", label: "versions, develop and production" },
+      { value: "3", label: "languages, direction included" },
+    ],
+    stack: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "dnd-kit",
+      "Tailwind CSS",
+      "Radix UI",
+      "Zod",
+      "i18next",
+    ],
+    sections: [
+      {
+        kicker: "01 — Problem",
+        heading: "A screen was a ticket",
+        body: [
+          "A new banner, a product row, a page embedded in a web view: each one waited on an engineer, and the wait was measured in days. The people editing the catalog were not the people who could open a React Native project.",
+          "The studio had to be the whole path. Compose the screen, set the public name and the color, and leave with a file. If any step still needed a developer, the queue was still the product.",
+        ],
+      },
+      {
+        kicker: "02 — Canvas",
+        heading: "Drop it on the phone",
+        body: [
+          "The canvas is a phone, not a freeform artboard. Ten layouts sit in the palette: five banners, four lists, and a web view. A drop appends a block to the screen — or inserts it above or below the block you hover. Up to six screens, each with its own blocks.",
+          "Develop is the only version that accepts a drop. Switch the nav to production and the palette goes quiet: the published screen is there to look at, not to nudge.",
+        ],
+      },
+      {
+        kicker: "03 — Schema",
+        heading: "What gets saved is JSON",
+        body: [
+          "A block is a type plus its attributes: title, display, autoplay, the module it reads from, the screen a tap opens. Save writes that list as the develop version. Merge copies develop onto production. Restore copies production back, when an edit should be thrown away.",
+          "The React Native app renders the schema. The studio never emits component source, so a non-technical edit cannot fork the codebase.",
+        ],
+        media: {
+          src: "/images/projects/builder-pipeline.svg",
+          alt: "Diagram of compose, develop, and production: blocks become a schema, merge copies develop onto production, then build downloads it",
+          caption:
+            "Drops land in develop. Production is the copy merge makes, and the copy the build downloads.",
+        },
+      },
+      {
+        kicker: "04 — Brand",
+        heading: "Name, color, light and dark",
+        body: [
+          "The public name is the word on the home screen, capped, and the product only allowed a change every 30 days — often enough to rebrand, not often enough to thrash a listing.",
+          "Color is one palette with two shades. Picking clay writes the light primary and the darker shade the night phone uses. The preview on the settings page is that phone, so the theme is visible before anything is built.",
+        ],
+        media: {
+          src: "/images/projects/builder-theme.png",
+          alt: "App settings with the name Lumen, a clay color selected, and the same storefront previewed on a phone",
+          caption:
+            "Deep orange is the palette. The sheet on the right is that color on the Lumen home.",
+        },
+      },
+      {
+        kicker: "05 — Ship",
+        heading: "Merge, bundle, download",
+        body: [
+          "Build walks the version that is allowed to ship: develop is saved, merged onto production, then bundled. Download is the other button. The file is the product a teammate can hand to a customer — no React Native install on their machine, no ticket back to engineering.",
+          "The shell around the studio was itself translated, Persian, English, and Arabic, and the canvas followed the language direction. The screens here are the English, left-to-right pass.",
+        ],
+        media: {
+          src: "/images/projects/builder-ship.png",
+          alt: "Release card with develop saved, merged to production, and a React Native bundle, next to a Download button for Lumen.apk",
+          caption:
+            "The palette turns blue, then back. Build saves, merges, and bundles. View opens what Lumen.json contains.",
+          video: "/videos/builder-ship.mp4",
+        },
+      },
+      {
+        kicker: "06 — Outcome",
+        heading: "An afternoon, not a sprint",
+        body: [
+          "Screen work moved off the engineering queue. A catalog person could put a slideshow, a category row, and a product list on the home screen, name the app, and leave with a build the same day. What used to be a multi-day ticket became a sitting.",
+          "The same season I also shipped a schema-driven form builder — eleven field types, the same instinct that a document should outlive the component that draws it. The app builder is the one you can see: a phone, filling up.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "reservations",
     title: "Reservation Platform — Zero Double-Bookings",
     eyebrow: "Full-Stack · System Design",

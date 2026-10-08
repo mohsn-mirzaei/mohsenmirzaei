@@ -22,8 +22,8 @@ export async function Projects() {
           }
         />
         <Reveal as="p" className="mt-6 max-w-md text-sm leading-relaxed text-muted">
-          Four featured builds with full write-ups — scroll sideways, or open a
-          case study for the architecture behind it.
+          Featured builds — scroll sideways, or open a case study for the
+          architecture behind it.
         </Reveal>
       </div>
 
