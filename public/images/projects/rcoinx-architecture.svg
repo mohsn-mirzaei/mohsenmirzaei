@@ -1,8 +1,119 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" font-family="ui-monospace,Menlo,monospace">
-<rect width="1600" height="1000" fill="#08080a"/>
-<defs><marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0L8,3L0,6Z" fill="#82827c"/></marker></defs><text x="80" y="90" fill="#d6ff3f" font-size="16" text-anchor="start" letter-spacing="3">REF-COUNTED WEBSOCKET LAYER</text><rect x="80" y="160" width="280" height="90" rx="12" fill="#141418" stroke="rgba(245,245,240,0.10)"/><text x="220" y="199" fill="#ededed" font-size="15" text-anchor="middle" letter-spacing="1">orderbook stream</text><text x="220" y="221" fill="#82827c" font-size="11" text-anchor="middle" letter-spacing="1">wss://</text><line x1="360" y1="205" x2="480" y2="360" stroke="rgba(245,245,240,0.2)" stroke-width="1.6" marker-end="url(#ah)"/><rect x="80" y="290" width="280" height="90" rx="12" fill="#141418" stroke="rgba(245,245,240,0.10)"/><text x="220" y="329" fill="#ededed" font-size="15" text-anchor="middle" letter-spacing="1">trades stream</text><text x="220" y="351" fill="#82827c" font-size="11" text-anchor="middle" letter-spacing="1">wss://</text><line x1="360" y1="335" x2="480" y2="380" stroke="rgba(245,245,240,0.2)" stroke-width="1.6" marker-end="url(#ah)"/><rect x="80" y="420" width="280" height="90" rx="12" fill="#141418" stroke="rgba(245,245,240,0.10)"/><text x="220" y="459" fill="#ededed" font-size="15" text-anchor="middle" letter-spacing="1">ticker stream</text><text x="220" y="481" fill="#82827c" font-size="11" text-anchor="middle" letter-spacing="1">wss://</text><line x1="360" y1="465" x2="480" y2="400" stroke="rgba(245,245,240,0.2)" stroke-width="1.6" marker-end="url(#ah)"/><rect x="480" y="300" width="320" height="180" rx="12" fill="#141418" stroke="rgba(245,245,240,0.10)"/><text x="640" y="384" fill="#ededed" font-size="15" text-anchor="middle" letter-spacing="1">Socket Manager</text><text x="640" y="406" fill="#82827c" font-size="11" text-anchor="middle" letter-spacing="1">ref-counted subscriptions · reconnect</text><line x1="800" y1="390" x2="920" y2="390" stroke="rgba(245,245,240,0.2)" stroke-width="1.6" marker-end="url(#ah)"/><rect x="920" y="300" width="300" height="180" rx="12" fill="#141418" stroke="rgba(245,245,240,0.10)"/><text x="1070" y="384" fill="#ededed" font-size="15" text-anchor="middle" letter-spacing="1">Normalized Cache</text><text x="1070" y="406" fill="#82827c" font-size="11" text-anchor="middle" letter-spacing="1">throttled patches · 200–300ms</text><line x1="1220" y1="390" x2="1330" y2="390" stroke="rgba(245,245,240,0.2)" stroke-width="1.6" marker-end="url(#ah)"/><rect x="1330" y="160" width="200" height="90" rx="12" fill="#141418" stroke="rgba(245,245,240,0.10)"/><text x="1430" y="199" fill="#d6ff3f" font-size="15" text-anchor="middle" letter-spacing="1">Order Book</text><rect x="1330" y="300" width="200" height="90" rx="12" fill="#141418" stroke="rgba(245,245,240,0.10)"/><text x="1430" y="339" fill="#d6ff3f" font-size="15" text-anchor="middle" letter-spacing="1">Chart</text><rect x="1330" y="440" width="200" height="90" rx="12" fill="#141418" stroke="rgba(245,245,240,0.10)"/><text x="1430" y="479" fill="#d6ff3f" font-size="15" text-anchor="middle" letter-spacing="1">Ticker</text><line x1="1220" y1="350" x2="1330" y2="205" stroke="rgba(245,245,240,0.2)" stroke-width="1.6" marker-end="url(#ah)"/><line x1="1220" y1="430" x2="1330" y2="485" stroke="rgba(245,245,240,0.2)" stroke-width="1.6" marker-end="url(#ah)"/><rect x="80" y="620" width="1450" height="280" rx="16" fill="#0e0e11" stroke="rgba(245,245,240,0.10)"/><text x="120" y="672" fill="#82827c" font-size="14" text-anchor="start" letter-spacing="1">subscribe(topic) → refCount += 1 · first subscriber opens upstream · last unsubscribe tears down</text><text x="120" y="712" fill="#82827c" font-size="14" text-anchor="start" letter-spacing="1">ticks patch cache, never React state · one flush per topic per window</text><text x="120" y="752" fill="#82827c" font-size="14" text-anchor="start" letter-spacing="1">reconnect walks the registry and replays every topic with refCount &gt; 0</text><rect x="120" y="790" width="900" height="8" rx="5" fill="#191920"/><rect x="120" y="815" width="700" height="8" rx="5" fill="#191920"/><rect x="120" y="840" width="800" height="8" rx="5" fill="#191920"/>
-<g opacity="0.55">
-  <rect x="1386" y="956" width="198" height="28" rx="14" fill="#191920" stroke="rgba(245,245,240,0.10)"/>
-  <text x="1485" y="975" fill="#82827c" font-size="12" text-anchor="middle" letter-spacing="2">PLACEHOLDER</text>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">RcoinX ref-counted WebSocket layer</title>
+  <desc id="desc">Three channels share one socket. The subscription table is ref-counted. Ticks patch a throttled cache, and the UI reads that cache.</desc>
+  <rect width="1200" height="760" fill="#08080a"/>
+  <text x="48" y="56" fill="#d6ff3f" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="3.2">WEBSOCKET LAYER</text>
+  <text x="48" y="98" fill="#ededed" font-family="ui-sans-serif, system-ui, sans-serif" font-size="32" font-weight="600">Three streams. One subscription table.</text>
+  <text x="48" y="132" fill="#82827c" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">No component holds a socket. subscribe(channel) is the only door in.</text>
+
+  <!-- connectors -->
+  <g fill="none" stroke="#d6ff3f" stroke-width="1.5" opacity="0.85">
+    <path d="M292 430 H322" />
+    <path d="M578 430 H608" />
+    <path d="M864 430 H894" />
+  </g>
+  <g fill="#d6ff3f">
+    <path d="M322 430 l-8 -4.5 v9 z"/>
+    <path d="M608 430 l-8 -4.5 v9 z"/>
+    <path d="M894 430 l-8 -4.5 v9 z"/>
+  </g>
+
+  <!-- 01 streams -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <rect x="48" y="176" width="244" height="508" rx="16" fill="#141418" stroke="rgba(245,245,240,0.10)"/>
+    <text x="72" y="214" fill="#d6ff3f" font-size="13" letter-spacing="2">01</text>
+    <text x="104" y="214" fill="#ededed" font-size="15" letter-spacing="1.4">STREAMS</text>
+    <text x="72" y="242" fill="#82827c" font-size="12">one socket, three channels</text>
+
+    <rect x="72" y="268" width="196" height="112" rx="12" fill="#0e0e11" stroke="rgba(245,245,240,0.10)"/>
+    <text x="92" y="306" fill="#ededed" font-size="16">ticker</text>
+    <text x="92" y="332" fill="#82827c" font-size="12">ticker:{market}</text>
+    <text x="92" y="356" fill="#6f6f69" font-size="12">250ms downstream</text>
+
+    <rect x="72" y="396" width="196" height="112" rx="12" fill="#0e0e11" stroke="rgba(214,255,63,0.35)"/>
+    <text x="92" y="434" fill="#ededed" font-size="16">depth</text>
+    <text x="92" y="460" fill="#d6ff3f" font-size="12">depth:{market}:50</text>
+    <text x="92" y="484" fill="#6f6f69" font-size="12">300ms downstream</text>
+
+    <rect x="72" y="524" width="196" height="112" rx="12" fill="#0e0e11" stroke="rgba(245,245,240,0.10)"/>
+    <text x="92" y="562" fill="#ededed" font-size="16">trades</text>
+    <text x="92" y="588" fill="#82827c" font-size="12">trades:{market}</text>
+    <text x="92" y="612" fill="#6f6f69" font-size="12">200ms downstream</text>
+  </g>
+
+  <!-- 02 subscribe -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <rect x="334" y="176" width="244" height="508" rx="16" fill="#141418" stroke="rgba(245,245,240,0.10)"/>
+    <text x="358" y="214" fill="#d6ff3f" font-size="13" letter-spacing="2">02</text>
+    <text x="390" y="214" fill="#ededed" font-size="15" letter-spacing="1.4">REFCOUNT</text>
+    <text x="358" y="242" fill="#82827c" font-size="12">SubscriptionManager</text>
+
+    <rect x="358" y="268" width="196" height="168" rx="12" fill="#0e0e11" stroke="rgba(245,245,240,0.10)"/>
+    <text x="374" y="298" fill="#6f6f69" font-size="11" letter-spacing="1.2">CHANNEL</text>
+    <text x="520" y="298" fill="#6f6f69" font-size="11" letter-spacing="1.2" text-anchor="end">REFS</text>
+    <text x="374" y="332" fill="#ededed" font-size="13">depth</text>
+    <text x="520" y="332" fill="#d6ff3f" font-size="13" text-anchor="end">2</text>
+    <text x="374" y="366" fill="#ededed" font-size="13">ticker</text>
+    <text x="520" y="366" fill="#ededed" font-size="13" text-anchor="end">1</text>
+    <text x="374" y="400" fill="#ededed" font-size="13">trades</text>
+    <text x="520" y="400" fill="#ededed" font-size="13" text-anchor="end">1</text>
+
+    <text x="358" y="476" fill="#ededed" font-size="13">first subscriber</text>
+    <text x="358" y="498" fill="#82827c" font-size="12">sends subscribe</text>
+    <text x="358" y="536" fill="#ededed" font-size="13">last unsubscribe</text>
+    <text x="358" y="558" fill="#82827c" font-size="12">sends unsubscribe</text>
+    <text x="358" y="596" fill="#ededed" font-size="13">on reconnect</text>
+    <text x="358" y="618" fill="#82827c" font-size="12">replay refCount &gt; 0</text>
+  </g>
+
+  <!-- 03 cache -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <rect x="620" y="176" width="244" height="508" rx="16" fill="#141418" stroke="rgba(245,245,240,0.10)"/>
+    <text x="644" y="214" fill="#d6ff3f" font-size="13" letter-spacing="2">03</text>
+    <text x="676" y="214" fill="#ededed" font-size="15" letter-spacing="1.4">CACHE</text>
+    <text x="644" y="242" fill="#82827c" font-size="12">trailing-edge throttle</text>
+
+    <rect x="644" y="268" width="196" height="96" rx="12" fill="#0e0e11" stroke="rgba(245,245,240,0.10)"/>
+    <text x="664" y="304" fill="#ededed" font-size="15">ticker</text>
+    <text x="820" y="304" fill="#d6ff3f" font-size="13" text-anchor="end">250ms</text>
+    <text x="664" y="332" fill="#82827c" font-size="12">header + last candle</text>
+
+    <rect x="644" y="380" width="196" height="96" rx="12" fill="#0e0e11" stroke="rgba(214,255,63,0.35)"/>
+    <text x="664" y="416" fill="#ededed" font-size="15">depth</text>
+    <text x="820" y="416" fill="#d6ff3f" font-size="13" text-anchor="end">300ms</text>
+    <text x="664" y="444" fill="#82827c" font-size="12">mergeDepth patch</text>
+
+    <rect x="644" y="492" width="196" height="96" rx="12" fill="#0e0e11" stroke="rgba(245,245,240,0.10)"/>
+    <text x="664" y="528" fill="#ededed" font-size="15">trades</text>
+    <text x="820" y="528" fill="#d6ff3f" font-size="13" text-anchor="end">200ms</text>
+    <text x="664" y="556" fill="#82827c" font-size="12">deals list</text>
+
+    <text x="644" y="624" fill="#82827c" font-size="12">latest tick in the window</text>
+    <text x="644" y="646" fill="#82827c" font-size="12">lands in TanStack Query</text>
+  </g>
+
+  <!-- 04 ui -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <rect x="906" y="176" width="246" height="508" rx="16" fill="#141418" stroke="rgba(214,255,63,0.45)"/>
+    <text x="930" y="214" fill="#d6ff3f" font-size="13" letter-spacing="2">04</text>
+    <text x="962" y="214" fill="#ededed" font-size="15" letter-spacing="1.4">UI</text>
+    <text x="930" y="242" fill="#82827c" font-size="12">reads the cache</text>
+
+    <rect x="930" y="272" width="198" height="64" rx="12" fill="#0e0e11" stroke="rgba(245,245,240,0.10)"/>
+    <text x="950" y="310" fill="#ededed" font-size="15">Market header</text>
+
+    <rect x="930" y="348" width="198" height="64" rx="12" fill="#0e0e11" stroke="rgba(214,255,63,0.35)"/>
+    <text x="950" y="386" fill="#d6ff3f" font-size="15">Order book</text>
+
+    <rect x="930" y="424" width="198" height="64" rx="12" fill="#0e0e11" stroke="rgba(245,245,240,0.10)"/>
+    <text x="950" y="462" fill="#ededed" font-size="15">Candles</text>
+
+    <rect x="930" y="500" width="198" height="64" rx="12" fill="#0e0e11" stroke="rgba(245,245,240,0.10)"/>
+    <text x="950" y="538" fill="#ededed" font-size="15">Executions</text>
+
+    <rect x="930" y="576" width="198" height="64" rx="12" fill="#0e0e11" stroke="rgba(245,245,240,0.10)"/>
+    <text x="950" y="614" fill="#ededed" font-size="15">Order form</text>
+  </g>
+
+  <text x="48" y="724" fill="#6f6f69" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14">Ticks never touch React state. The cache flushes on a fixed cadence, so the book renders at a predictable rate.</text>
 </svg>

@@ -22,7 +22,7 @@ export const projects: Project[] = [
       "Tailwind",
     ],
     media: {
-      image: "/images/projects/rcoinx.svg",
+      image: "/images/projects/rcoinx.png",
       alt: "RcoinX spot trading interface — order book, candlestick chart, and order form",
     },
     caseStudy: true,

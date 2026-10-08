@@ -12,9 +12,11 @@ export const caseStudies: CaseStudy[] = [
     intro:
       "A pre-launch cryptocurrency exchange needed a frontend platform that could render live market data for thousands of concurrent users without dropping frames — starting from an empty repository.",
     heroMedia: {
-      src: "/images/projects/rcoinx.svg",
-      alt: "RcoinX spot trading interface — order book, candlestick chart, and order form",
-      caption: "PLACEHOLDER — replace with a real screenshot of the trading screen.",
+      src: "/images/projects/rcoinx.png",
+      alt: "RcoinX desktop spot terminal with the order book, chart, and order form updating live",
+      caption:
+        "Search SOL, open it, switch the chart to 15m, then a market order for 0.25. The book and tape keep moving underneath.",
+      video: "/videos/rcoinx-terminal.mp4",
     },
     metrics: [
       { value: "~9.5K", label: "LOC of Spot Trading, end-to-end" },
@@ -69,7 +71,7 @@ export const caseStudies: CaseStudy[] = [
           src: "/images/projects/rcoinx-architecture.svg",
           alt: "Diagram of the ref-counted WebSocket layer: streams multiplexed into a throttled cache feeding UI slices",
           caption:
-            "The WebSocket layer: 3 streams → ref-counted subscriptions → throttled cache patches → UI. PLACEHOLDER diagram — replace with a polished export.",
+            "Three channels share one socket. The first subscriber opens the stream, the last unsubscribe closes it, and ticks land in a cache at 200–300ms.",
         },
       },
       {
@@ -77,20 +79,50 @@ export const caseStudies: CaseStudy[] = [
         heading: "A monorepo the team couldn't break",
         body: [
           "I structured the codebase as a Turborepo monorepo with 8 shared packages (ui, providers, http, i18n, types, cross-feature APIs) and strict Feature-Sliced Design import boundaries enforced by ESLint. A feature can't reach into another feature's internals; a page can't import a raw API client. The linter, not code review, holds the architecture.",
-          "Account & Security shipped on the same foundation: TOTP, WebAuthn, MFA-gated flows — with RTL/LTR Storybook components and Vitest + MSW contract tests running in Docker CI, so backend churn broke tests, not production.",
+          "RTL/LTR Storybook components and Vitest + MSW contract tests run in Docker CI, so backend churn broke tests, not production.",
         ],
       },
       {
-        kicker: "05 — Outcome",
+        kicker: "05 — Security",
+        heading: "The dialog opens after the session exists",
+        body: [
+          "Sensitive account actions never open a form first. Linking an authenticator, adding a passkey, or changing an email creates an MFA session, and the dialog mounts only after that session exists. The stepper will not move on until the code — email, TOTP, or WebAuthn — actually verifies.",
+          "Which methods exist is a fact about the user, not a guess inside the component. Email, authenticator, and passkey are flags on the profile. Phone has to be set before passkey or TOTP management unlocks, so the security page cannot offer a method the account is not ready for.",
+        ],
+        media: {
+          src: "/images/projects/rcoinx-mfa.png",
+          alt: "RcoinX security settings with email, passkey, and TOTP two-factor authentication enabled",
+          caption:
+            "Account security: email, passkey, and TOTP, each marked set only when the profile actually has that method.",
+        },
+      },
+      {
+        kicker: "06 — In use",
+        heading: "The same gate, a different title",
+        body: [
+          "The security page is where a method gets turned on. Everywhere else, the gate is one dialog. Password, email, phone, authenticator, and passkey each create a session first, then walk an SMS code, then a choice of email, passkey, or TOTP. The step after that — a new password, a QR code — only appears once that choice verifies.",
+          "What changes is the title. The steps do not.",
+        ],
+        media: {
+          src: "/images/projects/rcoinx-mfa-gate.png",
+          alt: "Change Password dialog on RcoinX with the 2FA step open to email, passkey, or TOTP",
+          caption:
+            "After SMS, the gate offers email, passkey, or TOTP. The video continues through the authenticator code and the new password, and stays open until Done.",
+          video: "/videos/rcoinx-mfa.mp4",
+        },
+      },
+      {
+        kicker: "07 — Outcome",
         heading: "What shipped",
         body: [
           "Spot Trading shipped end-to-end (~9.5K LOC): order book, candlestick charts, order management, 9 REST integrations, 3 WebSocket streams. Three engineers shipped in parallel without stepping on each other, and the WebSocket layer hasn't needed structural changes since it landed.",
         ],
         media: {
-          src: "/images/projects/rcoinx-orderbook.svg",
+          src: "/images/projects/rcoinx-orderbook.png",
           alt: "Close-up of the RcoinX order book and depth visualization updating live",
           caption:
-            "PLACEHOLDER — replace with a screen recording of the live order book (this is where a 10-second video earns its keep).",
+            "Order book and depth, updated from the throttled cache. Ten seconds, silent, and safe to loop.",
+          video: "/videos/rcoinx-orderbook.mp4",
         },
       },
     ],
