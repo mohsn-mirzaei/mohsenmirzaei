@@ -138,9 +138,11 @@ export const caseStudies: CaseStudy[] = [
     intro:
       "Chatomatic lets businesses train an AI assistant on their own content and embed it anywhere. I co-founded it, launched to 100+ users, then rebuilt the entire platform solo — ~25K LOC across dashboard, playground, API, and an embeddable widget.",
     heroMedia: {
-      src: "/images/projects/chatomatic.svg",
-      alt: "Chatomatic dashboard — streaming AI chat with inline citations and assistant playground",
-      caption: "PLACEHOLDER — replace with a real dashboard screenshot.",
+      src: "/images/projects/chatomatic.png",
+      alt: "Chatomatic playground with a streamed answer, numbered citations, and the chunks retrieved for that turn",
+      caption:
+        "Ask about the return window. The answer streams with numbered citations, and the cursor rests under the reply.",
+      video: "/videos/chatomatic-playground.mp4",
     },
     metrics: [
       { value: "100+", label: "users at launch" },
@@ -180,11 +182,24 @@ export const caseStudies: CaseStudy[] = [
           src: "/images/projects/chatomatic-rag.svg",
           alt: "Diagram of the two-phase streaming pipeline: retrieval, token stream, then citation persistence",
           caption:
-            "Two-phase streaming: retrieve → stream tokens → persist citations after the stream closes. PLACEHOLDER diagram.",
+            "Retrieve the top chunks, stream the tokens, and write the citation set only after the stream closes.",
         },
       },
       {
-        kicker: "03 — Streaming",
+        kicker: "03 — Knowledge",
+        heading: "Five formats, one index",
+        body: [
+          "A source the assistant has not been trained on cannot be cited. PDF, DOCX, XLSX, Markdown, and FAQs land in the same index, with character counts for what is ready and what is still waiting.",
+        ],
+        media: {
+          src: "/images/projects/chatomatic-sources.png",
+          alt: "Chatomatic sources screen with trained documents and one PDF still waiting to be trained",
+          caption:
+            "repairs.pdf is uploaded and untrained. Until the next train, the playground cannot cite it.",
+        },
+      },
+      {
+        kicker: "04 — Streaming",
         heading: "Two-phase streaming chat",
         body: [
           "Streaming and persistence fight each other: you want tokens on screen immediately, but citations aren't final until the stream ends. The pipeline runs in two phases — phase one retrieves and streams tokens to the client; phase two, after the stream closes, persists the message with its citation set atomically. The user sees a live answer; the database only ever sees a complete one.",
@@ -192,19 +207,21 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        kicker: "04 — Embed",
+        kicker: "05 — Embed",
         heading: "A widget that survives any website",
         body: [
           "The embeddable widget renders inside Shadow DOM, so host-page CSS can't leak in and widget styles can't leak out. It's built with Vite and bundled with Rollup into a single self-contained script — one tag, any site, no iframe jank.",
         ],
         media: {
-          src: "/images/projects/chatomatic-embed.svg",
-          alt: "Chatomatic widget embedded on a customer website, opened over the page content",
-          caption: "PLACEHOLDER — replace with a real embed screenshot on a customer site.",
+          src: "/images/projects/chatomatic-embed.png",
+          alt: "Chatomatic widget open on a Fieldnote product page, answering a shipping question with citations",
+          caption:
+            "The same assistant, on the product page. One script tag, and the host CSS never reaches the widget.",
+          video: "/videos/chatomatic-embed.mp4",
         },
       },
       {
-        kicker: "05 — Outcome",
+        kicker: "06 — Outcome",
         heading: "Launch, and the harder second version",
         body: [
           "V1 launched to 100+ users. The 2026 rebuild — done solo — replaced the entire stack with the architecture above (~25K LOC), turning a launched MVP into a platform: dashboard, playground, typed API, and an embed that businesses can install in a minute.",

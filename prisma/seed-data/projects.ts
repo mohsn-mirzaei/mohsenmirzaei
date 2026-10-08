@@ -49,7 +49,7 @@ export const projects: Project[] = [
       "Rollup",
     ],
     media: {
-      image: "/images/projects/chatomatic.svg",
+      image: "/images/projects/chatomatic.png",
       alt: "Chatomatic dashboard — streaming AI chat with inline citations and assistant playground",
     },
     caseStudy: true,
