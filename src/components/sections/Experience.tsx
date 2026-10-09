@@ -11,7 +11,7 @@ export async function Experience() {
         eyebrow="Experience"
         title={
           <>
-            Eight products across crypto, fintech &amp;{" "}
+            Ten products across commerce, edtech, fintech &amp;{" "}
             <span className="font-serif-it">AI</span>.
           </>
         }

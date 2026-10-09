@@ -2,6 +2,67 @@ import type { Project } from "../../src/lib/data";
 
 export const projects: Project[] = [
   {
+    title: "Alexander's Antiques",
+    slug: "alexanders-antiques",
+    category: "Launched · Full-Stack Platform",
+    year: "2026",
+    description:
+      "A Manhattan gallery's own storefront, staff workbench, and API — 939 pieces migrated from 1stDibs and sold by conversation, not a cart. Live at alexanderantiques.com.",
+    bullets: [
+      "~130K LOC across a Next.js storefront, a Vite admin, and a 138-route NestJS API, behind 4,300+ automated tests.",
+      "Both apps shipped on fixtures first. The API arrived behind 16 ports, and a parity suite proved all 83 methods before cutover.",
+      "917-piece 1stDibs migration as a report-first command: it refuses to write when counts disagree and is safe to run twice.",
+    ],
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "NestJS",
+      "PostgreSQL",
+      "Drizzle",
+      "Better Auth",
+      "Turborepo",
+      "Tailwind CSS",
+    ],
+    media: {
+      image: "/images/projects/antiques.png",
+      alt: "Lighting department on the live Alexander's Antiques catalogue — filters, 167 pieces, and opaline lustres in the first row",
+      video: "/videos/antiques-storefront.mp4",
+    },
+    link: "https://alexanderantiques.com",
+    caseStudy: true,
+    featured: true,
+  },
+  {
+    title: "Smart School — Student & Teacher App",
+    slug: "smart-school",
+    category: "Mobile · PWA + Android · RTL",
+    year: "2026",
+    description:
+      "A ground-up rebuild of a school app with 180,000 installs: one React codebase that is a student's day or a teacher's desk, depending on who signs in.",
+    bullets: [
+      "20 live sections across two roles on 99 wrapped backend methods, each mapped from its wire shape by 69 typed mappers.",
+      "Web deploys reach Android with no store release: the client polls the version, reloads silently, then shows the changelog.",
+      "Adaptive motion: a frame-rate probe picks full, lite, or minimal per phone. 60K LOC behind 587 tests.",
+    ],
+    stack: [
+      "React 19",
+      "TypeScript",
+      "TanStack Router",
+      "TanStack Query",
+      "Zustand",
+      "Capacitor",
+      "PWA",
+      "Tailwind CSS",
+    ],
+    media: {
+      image: "/images/projects/smart-school.png",
+      alt: "Smart School student and teacher home screens side by side in Persian, dark theme",
+      video: "/videos/smart-school.mp4",
+    },
+    caseStudy: true,
+    featured: true,
+  },
+  {
     title: "RcoinX Trading Platform",
     slug: "rcoinx",
     category: "Crypto · Real-time",
@@ -88,7 +149,7 @@ export const projects: Project[] = [
     title: "Restaurant Reservation Platform",
     slug: "reservations",
     category: "Full-Stack · System Design",
-    year: "2025",
+    year: "2025–2026",
     description:
       "A 4-app reservation monorepo for event halls, tables, and catering with concurrency-safe booking for a US-market launch.",
     bullets: [

@@ -7,12 +7,14 @@
 - **Name:** Mohsen Mirzaei
 - **Role:** Full-Stack Engineer · TypeScript / React / Node.js
 - **Location:** Isfahan, Iran · Remote (GMT+3:30) · Open to relocation (EU)
-- **Experience:** 4+ years building for production; 8 products shipped; 14,000+ fintech users served.
+- **Experience:** 4+ years building for production; 10 products shipped; 14,000+ fintech users served.
 - **Core stack:** React 19, Next.js 15, TypeScript, JavaScript ES2022+, SQL, Go familiar, TanStack Query/Router, Zustand, Zod, WebSocket, Tailwind CSS, Radix UI, Fastify, PostgreSQL, Prisma, Redis, pgvector, BullMQ, Docker, Vitest, MSW, OpenTelemetry, Prometheus, Loki.
 - **Strengths:** real-time WebSocket systems, monorepo architecture (Turborepo + Feature-Sliced Design), RAG/AI product engineering, fintech workflows (KYC, OTP, WebAuthn), observability.
 
 ## Selected Work
 
+- Alexander's Antiques — Launched gallery platform for a Manhattan antiques dealer (https://alexanderantiques.com): Next.js storefront, Vite admin, and 138-route NestJS API in a ~130K LOC Turborepo monorepo; 939 pieces migrated from 1stDibs by a report-first, idempotent import; inquiry-not-checkout selling with phone OTP, six inquiry types, and two-way threads; 16 repository ports with an 83/83 parity suite at cutover; 4,300+ automated tests.
+- Smart School — Ground-up rebuild of a school app with 180,000 installs: one React 19 codebase serving students and teachers on web, PWA, and Capacitor Android; 20 live sections, 99 wrapped backend methods with 69 typed mappers, silent auto-update with in-app changelog, adaptive motion tiers from an FPS probe, 60K LOC and 587 tests.
 - Restaurant Reservation Platform — US-client 4-app monorepo: 3 booking channels, 21 customer/admin screens, 8-state lifecycle, transactional slot locking, 77 shared Zod schemas, 72 automated tests, BullMQ notifications, and a 9-service OpenTelemetry/Prometheus/Loki observability stack.
 - RcoinX — Pre-launch crypto exchange: architected frontend from scratch for a 3-engineer team; Turborepo monorepo with 8 shared packages, Spot Trading, 9 REST integrations, 3 WebSocket streams, TOTP/WebAuthn/MFA-gated flows, RTL/LTR Storybook, Vitest + MSW, and Docker CI.
 - Chatomatic — AI assistant SaaS: co-founded and launched to 100+ users; rebuilt end-to-end solo in 2026 with Fastify API, pgvector RAG, 2-phase streaming chat, Shadow DOM embed, and OpenAI/Ollama routing.
@@ -23,6 +25,8 @@
 
 ## Deep dives
 
+- Case study — Alexander's Antiques, a gallery that sells by conversation: https://mohsenmirzaei.com/work/alexanders-antiques
+- Case study — Smart School, one app for students and teachers: https://mohsenmirzaei.com/work/smart-school
 - Case study — RcoinX real-time spot trading: https://mohsenmirzaei.com/work/rcoinx
 - Case study — Chatomatic AI assistant SaaS: https://mohsenmirzaei.com/work/chatomatic
 - Case study — Reservation platform (zero double-bookings): https://mohsenmirzaei.com/work/reservations

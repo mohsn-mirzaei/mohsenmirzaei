@@ -2,9 +2,73 @@ import type { Experience } from "../../src/lib/data";
 
 export const experiences: Experience[] = [
   {
+    company: "Alexander's Antiques",
+    role: "Lead Full-Stack Engineer · Freelance",
+    period: "Jul 2026 – Nov 2026",
+    summary:
+      "Built a Manhattan gallery's own platform end to end — Next.js storefront, Vite staff workbench, and NestJS API — and launched it at alexanderantiques.com with 939 pieces migrated from 1stDibs.",
+    highlights: [
+      "Delivered ~130K LOC across storefront, admin, and a 138-route NestJS API, authoring 89% of commits behind a 4,300+ test quality gate.",
+      "Shipped both apps on fixtures first, then cut over to the API through 16 repository ports; a parity suite proved all 83 methods before launch.",
+      "Ran a report-first 1stDibs migration of 917 pieces into a four-level, 124-category taxonomy — idempotent, and refusing to write on a count mismatch.",
+      "Built inquiry-not-checkout selling: phone-OTP collectors, six inquiry types, two-way threads with images, and staff letters logged with their trace.",
+    ],
+    metrics: [
+      { value: "939", label: "pieces live" },
+      { value: "4,300+", label: "automated tests" },
+      { value: "83/83", label: "ports proven at cutover" },
+    ],
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "NestJS",
+      "PostgreSQL",
+      "Drizzle",
+      "Better Auth",
+      "Turborepo",
+      "Tailwind CSS",
+      "Cloudflare R2",
+      "Twilio",
+      "Docker",
+    ],
+    link: "https://alexanderantiques.com",
+  },
+  {
+    company: "Smart School · Maktabsoft",
+    role: "Lead Frontend Engineer · Freelance",
+    period: "Apr 2026 – Oct 2026",
+    summary:
+      "Rebuilt a school platform's mobile app from zero — one React codebase serving students and teachers on the web, as a PWA, and on Android, replacing an app with 180,000 installs.",
+    highlights: [
+      "Architected a 60K LOC feature-sliced app where the router assigns the role: 20 live student and teacher sections, frozen student URLs, no role branching in UI.",
+      "Wrapped 99 legacy backend methods with 69 typed mappers and a ranked contract-exceptions record, where live probes overrode wrong documentation.",
+      "Shipped silent auto-update across web, PWA, and a Capacitor Android shell, so web deploys reach Android with no store release.",
+      "Built adaptive motion — a frame-rate probe assigns full, lite, or minimal per device — with 587 tests across mappers, hooks, and stores.",
+    ],
+    metrics: [
+      { value: "180K", label: "installs on the app replaced" },
+      { value: "20", label: "live sections, two roles" },
+      { value: "587", label: "automated tests" },
+    ],
+    stack: [
+      "React 19",
+      "TypeScript",
+      "Vite",
+      "TanStack Router",
+      "TanStack Query",
+      "Zustand",
+      "Zod",
+      "Tailwind CSS",
+      "Capacitor",
+      "PWA",
+      "Docker",
+    ],
+  },
+  {
     company: "Restaurant Reservation Platform",
     role: "Full-Stack Engineer · Freelance, Part-Time",
-    period: "Sep 2025 – Present",
+    period: "Sep 2025 – Mar 2026",
     summary:
       "US-client reservation platform unifying event hall, catering, and table bookings into a 4-app monorepo with self-service booking flows and production observability.",
     highlights: [

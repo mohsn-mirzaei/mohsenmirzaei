@@ -76,6 +76,7 @@ export const skillGroups: SkillGroup[] = [
       "Zustand",
       "React Hook Form",
       "Framer Motion",
+      "Capacitor · PWA",
     ],
   },
   {
@@ -107,7 +108,9 @@ export const skillGroups: SkillGroup[] = [
     skills: [
       "Node.js",
       "Fastify",
+      "NestJS",
       "Prisma",
+      "Drizzle",
       "PostgreSQL",
       "Redis",
       "pgvector",
@@ -148,7 +151,7 @@ export const skillGroups: SkillGroup[] = [
 /** Headline numbers used in the about / stats strip. */
 export const stats: { value: string; label: string }[] = [
   { value: "4+", label: "Years building for production" },
-  { value: "8", label: "Products shipped" },
+  { value: "10", label: "Products shipped" },
   { value: "14k+", label: "Fintech users served" },
   { value: "100%", label: "Ownership, idea to deploy" },
 ];

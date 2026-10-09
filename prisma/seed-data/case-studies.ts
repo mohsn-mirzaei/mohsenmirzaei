@@ -2,6 +2,294 @@ import type { CaseStudy } from "../../src/lib/case-studies";
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "alexanders-antiques",
+    title: "Alexander's Antiques — A Gallery That Sells by Conversation",
+    eyebrow: "Launched · Full-Stack Platform",
+    year: "2026",
+    role: "Lead Full-Stack Engineer · Freelance",
+    timeline: "4 months · Jul–Nov 2026",
+    team: "3 contributors · I authored 89% of commits",
+    intro:
+      "Alexander's Antiques is a gallery in Manhattan whose pieces used to live on 1stDibs. It wanted its own house: a storefront where a collector can decide from across an ocean, an inquiry instead of a checkout, and one workbench where the staff answer. I built all three — storefront, admin, and API — and it is live at alexanderantiques.com.",
+    heroMedia: {
+      src: "/images/projects/antiques.png",
+      alt: "Lighting department on the live Alexander's Antiques catalogue — filters, 167 pieces, and opaline lustres in the first row",
+      caption:
+        "The live catalogue. The pointer steps through a tile's photographs, opens the blue opaline lustres, and turns the inquiry into a $4,000 offer.",
+      video: "/videos/antiques-storefront.mp4",
+    },
+    metrics: [
+      { value: "939", label: "pieces live on the site" },
+      { value: "~130K", label: "LOC across web, admin, and API" },
+      { value: "4,300+", label: "automated tests in one gate" },
+      { value: "83/83", label: "port methods proven at cutover" },
+    ],
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "NestJS",
+      "PostgreSQL",
+      "Drizzle",
+      "Better Auth",
+      "Zod",
+      "TanStack Router",
+      "TanStack Query",
+      "Turborepo",
+      "Tailwind CSS",
+      "Cloudflare R2",
+      "Twilio",
+      "Resend",
+      "OpenTelemetry",
+      "Sentry",
+      "Docker",
+    ],
+    liveUrl: "https://alexanderantiques.com",
+    sections: [
+      {
+        kicker: "01 — Problem",
+        heading: "A gallery, not a marketplace",
+        body: [
+          "On 1stDibs the gallery's pieces sat beside everyone else's. The house wanted its own address: every piece its own inventory, a real gallery on Second Avenue, and a sale that ends in a conversation with the people who own the piece.",
+          "That rules out a cart. A collector in London looking at a $19,850 cloisonné elephant wants a shipping quote, a condition report, maybe a video call — not a checkout button. The product works when a collector reaches a confident inquiry about the right piece, and the staff can answer it from one place.",
+        ],
+      },
+      {
+        kicker: "02 — The piece",
+        heading: "Decidable from a distance",
+        body: [
+          "The piece page carries what a remote buyer needs to judge it: the photographs, the period, the maker and whether the piece is by or attributed to them, the measurements as named dimensions, and an obvious next question. One button opens it.",
+          "Photographs load because someone asked for them: the viewport arrived, a pointer settled, a thumbnail was pressed. Measured on the live site, a piece with 19 photographs fetches 9 images before the first click.",
+        ],
+        media: {
+          src: "/images/projects/antiques-piece.png",
+          alt: "Large Chinese cloisonné enamel incense burner modeled as a caparisoned elephant on its piece page, $19,850, with the inquiry action",
+          caption:
+            "A cloisonné elephant, $19,850. The inquiry sits under the price. The thumbnails wait for a click.",
+        },
+      },
+      {
+        kicker: "03 — Inquiry",
+        heading: "Six questions instead of a checkout",
+        body: [
+          "The dialog offers six ways in: purchase, make an offer, request information, a condition report, a shipping quote, or a viewing — in Manhattan or by video. Each carries its own fields: an offer in cents, a destination and a postal code, in person or on a call.",
+          "A verified phone is the price of entry. Collectors sign in without a password by a code to that phone, Turnstile guards the send, and the SMS consent is stored with the version of the words they agreed to. The opening submission becomes the first card of a thread, not a message.",
+        ],
+        media: {
+          src: "/images/projects/antiques-inquiry.png",
+          alt: "Admin conversation for a shipping-quote inquiry to London, with the gallery's reply and the collector's answer",
+          caption:
+            "A shipping quote to SW3. The submission is the first card. The house answers with a price and the finial. The collector answers back.",
+        },
+      },
+      {
+        kicker: "04 — Workbench",
+        heading: "Answer from one place",
+        body: [
+          "Staff work a queue: new, responded, closed, closed by the collector. Opening a thread records who opened it first. A reply moves it to responded and sends the collector a letter, logged on the same page with its trace. A collector writing into a closed thread reopens it.",
+          "Every status write is a guarded update, so a collector writing while staff close the thread resolves to one stored state, never two.",
+        ],
+        media: {
+          src: "/images/projects/antiques-reply.png",
+          alt: "Admin replying to a video-viewing request for the Caldwell lamps, with the status changing to Responded",
+          caption:
+            "A video viewing for the Caldwell lamps. The reply goes out, the badge turns to Responded, and the letter is logged with its trace.",
+          video: "/videos/antiques-reply.mp4",
+        },
+      },
+      {
+        kicker: "05 — Architecture",
+        heading: "One seam, proven by count",
+        body: [
+          "The storefront and the admin shipped first, on fixtures, behind repository ports. When the NestJS API arrived, no component changed: an HTTP adapter implemented the same 83 methods across 16 ports, parsed every response with the same Zod schemas, and mapped the API's errors back to the codes the fixtures already threw.",
+          "A parity suite asserted every method by name, so cutover was a count reaching 83, not a feeling. dependency-cruiser holds the boundaries — the API may import the domain and nothing else — and OpenAPI is generated from the domain schemas, committed, and diffed in CI, so a breaking route fails the build instead of the launch.",
+        ],
+        media: {
+          src: "/images/projects/antiques-architecture.svg",
+          alt: "Diagram of the storefront and admin calling 16 ports in packages/data, with mock and HTTP adapters, the NestJS API, and the shared domain package",
+          caption:
+            "Two apps, one door to data. The mock and the HTTP adapter answer the same 83 methods. The domain is the only definition.",
+        },
+      },
+      {
+        kicker: "06 — Migration",
+        heading: "917 pieces, and nothing invented",
+        body: [
+          "The catalogue came from the gallery's 1stDibs listings: 917 pieces across a four-level taxonomy of 124 categories. The model followed the data, not the other way round. 294 pieces have a diameter and five have no measurement at all, so dimensions became a named map instead of height, width, and depth. A source that says Unknown stores nothing.",
+          "The import is an operator command, never a seed. It reports first, refuses to write when its counts disagree with the signed figures, is safe to run twice, and touches catalogue rows only — never an account, a session, or a setting. A piece publishes with exactly the facts its listing states.",
+        ],
+        media: {
+          src: "/images/projects/antiques-admin.png",
+          alt: "Admin products list with 917 pieces, prices, leaf categories, and published status",
+          caption:
+            "917 total, 37 pages. Every row is a piece the import placed in a leaf category, at the price its listing stated.",
+        },
+      },
+      {
+        kicker: "07 — Phone",
+        heading: "Two columns, and an inquiry that stays",
+        body: [
+          "On a phone the collection is two columns, the header compacts as you scroll, and the inquiry action stays on screen while the photographs move under it.",
+          "The storefront also lost weight while it gained motion. The three animations that pulled a JavaScript runtime into the first load became CSS, and home's first-load script fell from 558 KiB to 476 KiB.",
+        ],
+        media: {
+          src: "/images/projects/antiques-mobile.png",
+          alt: "Phone catalogue in two columns, then a pair of famille rose vases with the inquiry action fixed at the bottom",
+          caption:
+            "Asian Art on a phone. Two columns, a tap, the famille rose pair — and the yellow bar stays put while the photographs scroll.",
+          video: "/videos/antiques-mobile.mp4",
+        },
+      },
+      {
+        kicker: "08 — Quality",
+        heading: "A gate, not a review",
+        body: [
+          "Typecheck, lint, 4,300+ tests, the build, and the dependency boundaries run in that order on every change. The domain package holds a 90% coverage floor and everything else 80%. The storefront targets WCAG 2.2 AA and holds a Lighthouse accessibility score of 100 in CI.",
+          "Work moved through 27 written specifications — specify, plan, tasks, implement — and shipped UI changed only under an exception signed in the roadmap. That discipline is how three people shipped this in four months without the codebase fighting back.",
+        ],
+      },
+      {
+        kicker: "09 — Outcome",
+        heading: "Live, under the house's own name",
+        body: [
+          "alexanderantiques.com is live: 939 pieces in seven departments, a collector's portal with a wishlist and threads, the Collector's Letter with confirm-to-subscribe, and a workbench where staff publish, merchandise the home page, invite colleagues, and answer.",
+          "Nothing on the site claims more than the house can stand behind. There is no provenance field, because there is no document to back one. That was a product decision, and the schema enforces it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "smart-school",
+    title: "Smart School — One App, Two Desks",
+    eyebrow: "Mobile · PWA + Android · RTL",
+    year: "2026",
+    role: "Lead Frontend Engineer · Freelance",
+    timeline: "6 months · Apr–Oct 2026",
+    team: "Small team · I authored 93% of commits",
+    intro:
+      "Schools on the Maktabsoft platform reached their students through an Android app with 180,000 installs, a 3.4 rating, and reviews that said slow. We rebuilt it from zero — new design, new codebase — as one React app that is a student's school day or a teacher's desk, depending on who signs in, on the web, as a PWA, and on Android.",
+    heroMedia: {
+      src: "/images/projects/smart-school.png",
+      alt: "Smart School student and teacher home screens side by side in Persian, dark theme",
+      caption:
+        "Same app, two logins. The student opens Results for Bahman, then Dey. The teacher opens grade entry for Math 1, Mehr, types 19, and taps Excellent.",
+      video: "/videos/smart-school.mp4",
+    },
+    metrics: [
+      { value: "180K", label: "installs on the app it replaces" },
+      { value: "20", label: "live sections across two roles" },
+      { value: "99", label: "backend methods wrapped and typed" },
+      { value: "587", label: "automated tests" },
+    ],
+    stack: [
+      "React 19",
+      "TypeScript",
+      "Vite",
+      "TanStack Router",
+      "TanStack Query",
+      "Zustand",
+      "Zod",
+      "React Hook Form",
+      "Tailwind CSS",
+      "Motion",
+      "Capacitor",
+      "PWA",
+      "Docker",
+      "Umami",
+    ],
+    sections: [
+      {
+        kicker: "01 — Problem",
+        heading: "A rebuild, not a reskin",
+        body: [
+          "On paper the old app did the job: the weekly schedule, exams, grades, absences, homework, finances, messages. In practice it sat at 3.4 from 945 votes, and the reviews said it was slow and not worth installing unless the school made you.",
+          "The backend stayed — Maktabsoft's school API, used by every school on the platform. Everything in front of it was ours to replace: the design, the codebase, and the release path. Persian, right to left, on whatever phone a family owns.",
+        ],
+      },
+      {
+        kicker: "02 — Roles",
+        heading: "Two desks in one codebase",
+        body: [
+          "A student and a teacher come in through the same door, with a school code. After that the router decides. The role is checked in beforeLoad and the wrong one is redirected to its own home — never branched inside a component. Student URLs are frozen because existing users depend on them; teacher paths sit beside them and never collide.",
+          "Each section is a vertical slice that exports hooks and types through a public index, and shared UI takes behaviour as props, with no if (role) inside it. Server data lives in TanStack Query, shareable state in Zod-validated search params, the rest in Zustand — and nothing lives in two places, so refresh and back restore the same screen.",
+        ],
+        media: {
+          src: "/images/projects/smart-school-student.png",
+          alt: "Three student screens: results by month, an Arabic quiz with text, file, and voice answers, and the weekly schedule by bell",
+          caption:
+            "The student side. Grades by month with the teacher's name, a quiz that takes text, a file, or a voice note, and the week by bell.",
+        },
+      },
+      {
+        kicker: "03 — Teacher",
+        heading: "The desk the old app never had",
+        body: [
+          "The teacher's side is roll call by date and bell, grade entry by class, subject, and term, the points bank, discipline records, homework with a thread per student, virtual classes, surveys, and planning.",
+          "A grade sheet is one card per student: present, excused, or absent; a number; a word — Excellent, Good, Average, Needs effort — then group entry and a final submit. Dates are Jalali, and the calendar refuses a day that has not happened yet.",
+        ],
+        media: {
+          src: "/images/projects/smart-school-grades.png",
+          alt: "Teacher grade sheet for Math 1 in Mehr beside the roll-call date picker on Mehr 1405 with future days disabled",
+          caption:
+            "Math 1, Mehr. Each student is a card with attendance, a number, and a word. Beside it, Mehr 1405: the 17th is today, and every day after it is grey.",
+        },
+      },
+      {
+        kicker: "04 — Contract",
+        heading: "When the documentation is wrong",
+        body: [
+          "The backend had three sources of truth, and they disagreed: auto-generated method pages, backend documents, and what production actually answers. The generated student docs marked fields as required that production does without. One documented method was dead. A documented member delete failed with the documented body.",
+          "So the contract became evidence. Every method that diverges is probed live, ranked — live capture over backend docs over generated docs — and recorded with its session in a contract-exceptions file. 99 methods are wrapped, one file each, and 69 mappers turn wire shapes into types the screens can trust. No component ever sees a raw response.",
+        ],
+      },
+      {
+        kicker: "05 — Motion",
+        heading: "Measure the phone, then decide what moves",
+        body: [
+          "The design is glass and gradients, and it has to run on a four-year-old Android. Device specs lie — iOS reports four cores on every iPhone, and deviceMemory punishes 4 GB phones that render fine — so the app measures instead.",
+          "Reduced motion or Save-Data selects minimal before the first frame. Everyone else starts at lite, and a 1.4-second frame-rate probe after idle promotes the phone to full at 55 fps, steps it back under 52, or drops it to minimal under 38. Three long tasks inside two seconds also step down. Components read seven permission flags, not the tier, so the look survives and only the motion changes.",
+        ],
+        media: {
+          src: "/images/projects/smart-school-motion.svg",
+          alt: "Diagram of adaptive motion: boot tier, frame-rate probe thresholds, and seven motion permissions per tier",
+          caption:
+            "Boot picks a floor, the probe moves it, and every animated component asks a flag. The gap between 55 and 52 keeps a borderline phone from flickering.",
+        },
+      },
+      {
+        kicker: "06 — Release",
+        heading: "Deploy once, and every channel updates",
+        body: [
+          "The Android app is a Capacitor shell that loads the deployed web app, so a web deploy reaches it with no store release. Cafe Bazaar and Myket submissions are kept for native changes — a plugin, a permission.",
+          "Every client checks the version every five minutes and whenever the app comes back to the foreground. A newer one reloads the app silently — no please-refresh prompt — and after the reload the changelog appears, written in Persian in the repository. A pending-version guard stops a stale cache from looping the reload.",
+        ],
+        media: {
+          src: "/images/projects/smart-school-update.png",
+          alt: "Student home before and after a silent reload, then the automatic update panel for version 1.6.6 with its Persian changelog",
+          caption:
+            "1.6.5 is on screen when 1.6.6 lands. The app reloads itself, then says what changed — eleven lines, in Persian, from the release file.",
+          video: "/videos/smart-school-update.mp4",
+        },
+      },
+      {
+        kicker: "07 — Operations",
+        heading: "A deploy path with no internet",
+        body: [
+          "Production builds on a server with no outbound internet. A push to Gitea fires a webhook, Portainer rebuilds the stack, and Docker installs from a private npm mirror with install scripts off. The team has no access to the Portainer UI, so every deploy fix ships through the repository.",
+          "Analytics are self-hosted Umami beside the app. Up to five accounts can be linked on one phone, so a family sharing a phone switches between accounts without signing out and back in. Deep links resolve to a safe internal path after login and never carry a token.",
+        ],
+      },
+      {
+        kicker: "08 — Outcome",
+        heading: "A school day in one app",
+        body: [
+          "Students get the week, exams, grades by month, attendance, the points bank, homework answered with text, files, or voice, virtual classes, surveys, planning, and finances. Teachers get the desk. Both get announcements that mark themselves read on the server, and both run on the same 60,000 lines of TypeScript behind 587 tests.",
+          "Version 1.6.6 is the current release. The old app's reviews were about waiting. This one measures the phone before it animates anything.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "rcoinx",
     title: "RcoinX — Real-time Spot Trading",
     eyebrow: "Crypto Exchange · Frontend Platform",
@@ -337,9 +625,9 @@ export const caseStudies: CaseStudy[] = [
     slug: "reservations",
     title: "Reservation Platform — Zero Double-Bookings",
     eyebrow: "Full-Stack · System Design",
-    year: "2025–present",
+    year: "2025–2026",
     role: "Full-Stack Engineer (freelance)",
-    timeline: "Ongoing · US client",
+    timeline: "7 months · Sep 2025–Mar 2026",
     team: "Solo, end-to-end",
     intro:
       "A US restaurant group ran event-hall, catering, and table bookings over the phone — three intake channels, one paper-adjacent process, and regular double-bookings. I replaced it with a 4-app platform where double-booking is structurally impossible.",

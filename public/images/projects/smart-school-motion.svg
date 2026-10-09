@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Smart School adaptive motion tiers</title>
+  <desc id="desc">On boot, reduced motion or Save-Data selects the minimal tier and everything else starts at lite. A 1.4 second frame-rate probe upgrades lite to full at 55 frames per second, steps full back to lite under 52, and drops to minimal under 38. Three long tasks inside two seconds also step down. Each tier is a set of seven motion permissions.</desc>
+  <rect width="1200" height="760" fill="#08080a"/>
+  <text x="48" y="56" fill="#d6ff3f" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="3.2">ADAPTIVE MOTION</text>
+  <text x="48" y="98" fill="#ededed" font-family="ui-sans-serif, system-ui, sans-serif" font-size="32" font-weight="600">Measure the phone. Then decide what moves.</text>
+  <text x="48" y="132" fill="#82827c" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">A school app runs on whatever a family owns. The tier is measured on the device, not guessed from its specs.</text>
+
+  <g fill="none" stroke="#d6ff3f" stroke-width="1.5" opacity="0.85">
+    <path d="M362 400 H392"/>
+    <path d="M778 400 H808"/>
+  </g>
+  <g fill="#d6ff3f">
+    <path d="M392 400 l-8 -4.5 v9 z"/>
+    <path d="M808 400 l-8 -4.5 v9 z"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <rect x="48" y="176" width="314" height="470" rx="16" fill="#141418" stroke="rgba(245,245,240,0.10)"/>
+    <text x="72" y="214" fill="#d6ff3f" font-size="13" letter-spacing="2">01</text>
+    <text x="104" y="214" fill="#ededed" font-size="15" letter-spacing="1.4">BOOT</text>
+    <text x="72" y="242" fill="#82827c" font-size="12">before the first frame</text>
+
+    <rect x="72" y="268" width="266" height="76" rx="12" fill="#0e0e11" stroke="rgba(245,245,240,0.10)"/>
+    <text x="90" y="294" fill="#ededed" font-size="14">reduced motion</text>
+    <text x="90" y="314" fill="#ededed" font-size="14">or Save-Data</text>
+    <text x="90" y="334" fill="#6f6f69" font-size="12">&#8594; minimal, honoured at once</text>
+
+    <rect x="72" y="358" width="266" height="62" rx="12" fill="#0e0e11" stroke="rgba(214,255,63,0.35)"/>
+    <text x="90" y="384" fill="#ededed" font-size="14">everyone else</text>
+    <text x="90" y="404" fill="#6f6f69" font-size="12">&#8594; lite, until measured</text>
+
+    <text x="72" y="462" fill="#82827c" font-size="12">IGNORED ON PURPOSE</text>
+    <text x="72" y="490" fill="#ededed" font-size="13">hardwareConcurrency</text>
+    <text x="72" y="508" fill="#6f6f69" font-size="12">iOS reports 4 cores on every iPhone</text>
+    <text x="72" y="538" fill="#ededed" font-size="13">deviceMemory</text>
+    <text x="72" y="556" fill="#6f6f69" font-size="12">penalises 4 GB phones that render</text>
+    <text x="72" y="572" fill="#6f6f69" font-size="12">smoothly</text>
+
+    <rect x="398" y="176" width="380" height="470" rx="16" fill="#141418" stroke="rgba(214,255,63,0.45)"/>
+    <text x="422" y="214" fill="#d6ff3f" font-size="13" letter-spacing="2">02</text>
+    <text x="454" y="214" fill="#ededed" font-size="15" letter-spacing="1.4">PROBE</text>
+    <text x="422" y="242" fill="#82827c" font-size="12">requestAnimationFrame &#183; 1.4 s sample after idle</text>
+
+    <g>
+      <rect x="422" y="268" width="332" height="58" rx="12" fill="#0e0e11" stroke="rgba(214,255,63,0.35)"/>
+      <text x="440" y="303" fill="#ededed" font-size="14">lite &#8594; full</text>
+      <text x="736" y="303" fill="#d6ff3f" font-size="14" text-anchor="end">&#8805; 55 fps</text>
+
+      <rect x="422" y="338" width="332" height="58" rx="12" fill="#0e0e11" stroke="rgba(245,245,240,0.10)"/>
+      <text x="440" y="373" fill="#ededed" font-size="14">full &#8594; lite</text>
+      <text x="736" y="373" fill="#ededed" font-size="14" text-anchor="end">&lt; 52 fps</text>
+
+      <rect x="422" y="408" width="332" height="58" rx="12" fill="#0e0e11" stroke="rgba(245,245,240,0.10)"/>
+      <text x="440" y="436" fill="#ededed" font-size="14">lite &#8594; minimal</text>
+      <text x="736" y="436" fill="#ededed" font-size="14" text-anchor="end">&lt; 38 fps</text>
+      <text x="440" y="455" fill="#6f6f69" font-size="12">30&#8211;38 is retried once: hydration noise</text>
+
+      <rect x="422" y="478" width="332" height="58" rx="12" fill="#0e0e11" stroke="rgba(245,245,240,0.10)"/>
+      <text x="440" y="506" fill="#ededed" font-size="14">long tasks</text>
+      <text x="736" y="506" fill="#ededed" font-size="14" text-anchor="end">3 &#215; &gt;50 ms / 2 s</text>
+      <text x="440" y="525" fill="#6f6f69" font-size="12">one step down</text>
+    </g>
+    <text x="422" y="576" fill="#82827c" font-size="12">HYSTERESIS</text>
+    <text x="422" y="602" fill="#6f6f69" font-size="12">55 up, 52 down, one fps change per tier.</text>
+    <text x="422" y="620" fill="#6f6f69" font-size="12">A borderline phone does not flicker.</text>
+
+    <rect x="814" y="176" width="338" height="470" rx="16" fill="#141418" stroke="rgba(245,245,240,0.10)"/>
+    <text x="838" y="214" fill="#d6ff3f" font-size="13" letter-spacing="2">03</text>
+    <text x="870" y="214" fill="#ededed" font-size="15" letter-spacing="1.4">POLICY</text>
+    <text x="838" y="242" fill="#82827c" font-size="12">components read flags, not tiers</text>
+
+    <text x="1012" y="276" fill="#82827c" font-size="11" text-anchor="middle">FULL</text>
+    <text x="1066" y="276" fill="#82827c" font-size="11" text-anchor="middle">LITE</text>
+    <text x="1120" y="276" fill="#82827c" font-size="11" text-anchor="middle">MIN</text>
+
+    <g font-size="13">
+      <text x="838" y="314" fill="#ededed">continuous</text>
+      <text x="838" y="358" fill="#ededed">list enter</text>
+      <text x="838" y="402" fill="#ededed">parallax</text>
+      <text x="838" y="446" fill="#ededed">spring overlay</text>
+      <text x="838" y="490" fill="#ededed">micro pulse</text>
+      <text x="838" y="534" fill="#ededed">ambient blobs</text>
+      <text x="838" y="578" fill="#ededed">hover transforms</text>
+    </g>
+    <g fill="#d6ff3f" font-size="15" text-anchor="middle">
+      <text x="1012" y="314">&#10003;</text>
+      <text x="1012" y="358">&#10003;</text>
+      <text x="1012" y="402">&#10003;</text>
+      <text x="1012" y="446">&#10003;</text>
+      <text x="1012" y="490">&#10003;</text>
+      <text x="1012" y="534">&#10003;</text>
+      <text x="1012" y="578">&#10003;</text>
+      <text x="1066" y="534">&#10003;</text>
+    </g>
+    <g fill="#3a3a3f" font-size="15" text-anchor="middle">
+      <text x="1066" y="314">&#183;</text>
+      <text x="1066" y="358">&#183;</text>
+      <text x="1066" y="402">&#183;</text>
+      <text x="1066" y="446">&#183;</text>
+      <text x="1066" y="490">&#183;</text>
+      <text x="1066" y="578">&#183;</text>
+      <text x="1120" y="314">&#183;</text>
+      <text x="1120" y="358">&#183;</text>
+      <text x="1120" y="402">&#183;</text>
+      <text x="1120" y="446">&#183;</text>
+      <text x="1120" y="490">&#183;</text>
+      <text x="1120" y="534">&#183;</text>
+      <text x="1120" y="578">&#183;</text>
+    </g>
+    <text x="838" y="620" fill="#6f6f69" font-size="12">Lite keeps the look. It drops the motion.</text>
+
+    <text x="48" y="696" fill="#82827c" font-size="12">QA can pin a tier on any phone: localStorage smart-school:motion-tier = minimal | lite | full.</text>
+  </g>
+</svg>
