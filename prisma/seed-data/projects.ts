@@ -206,6 +206,26 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    title: "HeidaryHa — Loan Fund",
+    slug: "heidaryha",
+    category: "Mobile · PWA + Android",
+    year: "2023–2024",
+    description:
+      "The member app for a قرض‌الحسنه fund: a stack of account cards, a transfer that spells the amount before it moves, and loans and guarantees on two lists.",
+    bullets: [
+      "Home is a deck of account cards. A swipe brings the next account to the front.",
+      "A SHEBA resolves to the bank and the account holder. The amount is read back in words, and only the rail that fits the sum stays available.",
+      "Loans and guarantees are two lists. One React codebase ships as the PWA and the Android app.",
+    ],
+    stack: ["React", "TypeScript", "Vite", "TanStack Query", "PWA", "Capacitor"],
+    media: {
+      image: "/images/projects/heidaryha.png",
+      alt: "HeidaryHa home in dark mode — savings card for 2,000,000,000 rials, with the current account stacked behind it",
+      video: "/videos/heidaryha-home.mp4",
+    },
+    caseStudy: true,
+  },
+  {
     title: "RTL Markdown Book Editor",
     slug: "rtl-markdown-editor",
     category: "Product · Editor",

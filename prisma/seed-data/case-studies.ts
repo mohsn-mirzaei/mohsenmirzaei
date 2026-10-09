@@ -272,7 +272,21 @@ export const caseStudies: CaseStudy[] = [
         },
       },
       {
-        kicker: "07 — Operations",
+        kicker: "07 — Shell",
+        heading: "A thin native layer, on purpose",
+        body: [
+          "Everything a school day needs lives in TypeScript and ships with the web app. The Android shell only does what a WebView cannot, and every call to it is behind a platform check, so the same code runs in a browser tab, an installed PWA, and the Bazaar build.",
+          "The shell is four touch points, each with an edge case handled:",
+        ],
+        bullets: [
+          "Deep links — smartschool://open works from a cold start and from the background, a repeated URL is handled once, and the target goes through login with the school code and a safe redirect. No token ever rides in the link.",
+          "Camera and microphone for virtual classes — the native permission is asked first, then probed. A phone that has no microphone is not reported as a refusal: nothing in the settings would fix it, so the class opens in listen-only mode.",
+          "Resume — on Android the version check runs when the app returns from the background, and open tabs reload together over a BroadcastChannel.",
+          "PDFs — on the native shell and Safari a PDF opens in the system browser rather than an embedded viewer; elsewhere it stays in an in-app sheet.",
+        ],
+      },
+      {
+        kicker: "08 — Operations",
         heading: "A deploy path with no internet",
         body: [
           "Production builds on a server with no outbound internet. A push to Gitea fires a webhook, Portainer rebuilds the stack, and Docker installs from a private npm mirror with install scripts off. The team has no access to the Portainer UI, so every deploy fix ships through the repository.",
@@ -280,7 +294,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        kicker: "08 — Outcome",
+        kicker: "09 — Outcome",
         heading: "A school day in one app",
         body: [
           "Students get the week, exams, grades by month, attendance, the points bank, homework answered with text, files, or voice, virtual classes, surveys, planning, and finances. Teachers get the desk. Both get announcements that mark themselves read on the server, and both run on the same 60,000 lines of TypeScript behind 587 tests.",
@@ -936,6 +950,124 @@ export const caseStudies: CaseStudy[] = [
         body: [
           "What ships is a studio for a right-to-left book: the source and the page stay on the same passage, the toolbar writes the structure in place, and the contents list is how you move through a chapter that no longer fits on one screen.",
           "The same season I also shipped the app builder and a schema-driven form builder. This one is the document: a page you can read while you are still typing it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "heidaryha",
+    title: "HeidaryHa — The Fund, On the Phone",
+    eyebrow: "Loan fund · PWA + Android",
+    year: "2023–2024",
+    role: "Frontend Engineer · Contract",
+    timeline: "2023–2024",
+    team: "Contract · I built the member app",
+    intro:
+      "HeidaryHa is a قرض‌الحسنه fund. A savings balance, a transfer, and a loan used to mean the branch. I built the phone members use instead: a stack of account cards, a transfer that says the amount in words before the money moves, and the loans and the guarantees on two lists. These screens are a specimen member, نگار آزمایشی. The fund serves 14,000+ customers.",
+    heroMedia: {
+      src: "/images/projects/heidaryha.png",
+      alt: "HeidaryHa home in dark mode — savings card 1402-88421 for 2,000,000,000 rials, with the current account stacked behind it",
+      caption:
+        "Dark mode, on the phone. The savings card is on top: 1402-88421, 2,000,000,000 rials. One swipe brings the current account forward.",
+      video: "/videos/heidaryha-home.mp4",
+    },
+    metrics: [
+      { value: "14k+", label: "members on the fund" },
+      { value: "40%", label: "more monthly loan applications" },
+      { value: "2", label: "lists, loans and guarantees" },
+      { value: "1", label: "codebase, PWA and Android" },
+    ],
+    stack: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "TanStack Query",
+      "Tailwind CSS",
+      "Zod",
+      "PWA",
+      "Capacitor",
+    ],
+    sections: [
+      {
+        kicker: "01 — Problem",
+        heading: "The branch was the product",
+        body: [
+          "A balance, a transfer, and a loan were three errands, or one employee reading numbers down a phone line. The member already had a phone. What was missing was a screen that could show the account, say the amount back in words, and light only the rail that the sum is allowed to use.",
+          "Android could not be a second product. The installed app and the site had to be the same React app.",
+        ],
+      },
+      {
+        kicker: "02 — The deck",
+        heading: "Two cards, one stack",
+        body: [
+          "Home is not a table of accounts. It is a deck. The savings card is on top in this recording: 1402-88421, شخصی, 2,000,000,000 rials. The current account is the card underneath, 1398-22017, 42,750,000 rials, and a swipe brings it to the front.",
+          "The line at the top of the screen is the fund's own name, صندوق قرض‌الحسنه حیدری‌ها. The recording is the dark theme, on the phone.",
+        ],
+      },
+      {
+        kicker: "03 — The transfer",
+        heading: "Said in words, then the rail",
+        body: [
+          "The destination is a SHEBA. Before the next step the field already names the bank: ملت, and the person on the account, سارا کیانی.",
+          "25,000,000 rials is read back as دو میلیون و پانصد هزار تومان. At that size, پایا is the rail that stays available. Raise the same transfer to 1,200,000,000 — یکصد و بیست میلیون تومان — and پایا goes quiet. ساتنا is the one that lights. Five digits confirm it. The receipt says انتقال موفق, method ساتنا, payer نگار آزمایشی, from the savings account.",
+        ],
+        media: {
+          src: "/images/projects/heidaryha-transfer.png",
+          alt: "Dark-mode transfer receipt for 1,200,000,000 rials to سارا کیانی at Bank Mellat, marked successful via ساتنا",
+          caption:
+            "Specimen only. Mellat and سارا کیانی, then the ceiling moves and ساتنا is the rail that stays lit. The receipt is انتقال موفق.",
+          video: "/videos/heidaryha-transfer.mp4",
+        },
+      },
+      {
+        kicker: "04 — Loans",
+        heading: "Yours, and the one you stand behind",
+        body: [
+          "وام‌ها and ضمانت‌ها are two doors. This is the loan list. 1403-1184 is فعال: 240,000,000 rials, 150,000,000 still outstanding, paid on 1403/02/15. Under it, 1401-0644 is تسویه شده, remain 0.",
+          "The other door is the guarantee list — the same kind of card, for a loan that belongs to someone else. نگار آزمایشی is the name on both of these.",
+        ],
+        media: {
+          src: "/images/projects/heidaryha-loans.png",
+          alt: "Dark-mode loan list for نگار آزمایشی — active loan 1403-1184 and cleared loan 1401-0644",
+          caption:
+            "One loan still open, one already cleared. The guarantee list is the other door on the screen before this.",
+        },
+      },
+      {
+        kicker: "05 — The lock",
+        heading: "Turn it on once",
+        body: [
+          "Settings has a row for it: ورود با اثر انگشت. فعال asks for the same four-digit master password. When that matches, the phone keeps the password. The row comes back with فعال marked.",
+        ],
+        media: {
+          src: "/images/projects/heidaryha-fingerprint.png",
+          alt: "Dark-mode settings drawer for ورود با اثر انگشت, with the four-digit master password 1234 filled in",
+          caption:
+            "فعال asks for the master password. After it matches, the finger can stand in for those four digits.",
+          video: "/videos/heidaryha-fingerprint.mp4",
+        },
+      },
+      {
+        kicker: "06 — The next open",
+        heading: "The field never gets the digits",
+        body: [
+          "Leave the app and the session locks. The gate is the same four boxes. Focusing them opens the system sheet, احراز هویت با رمز خدمات غیرحضوری, and the sensor answers instead of the keyboard.",
+          "A match sends the stored password. The deck is the next screen, and the toast says احراز هویت انجام شد.",
+        ],
+        media: {
+          src: "/images/projects/heidaryha-unlock.png",
+          alt: "Android fingerprint sheet over the HeidaryHa lock screen, asking to touch the sensor",
+          caption:
+            "The gate asks for the finger, the system sheet shows the sensor, and a match opens the home: احراز هویت انجام شد, then the balance settles.",
+          video: "/videos/heidaryha-unlock.mp4",
+        },
+      },
+      {
+        kicker: "07 — Outcome",
+        heading: "Fourteen thousand members, one codebase",
+        body: [
+          "Members do this on the phone now. Monthly loan applications rose 40%. There is no application wizard in this repository — that number is the outcome, not a screen I can show.",
+          "The same React app is the PWA and the Android shell, com.heidaryha.app. Coming back, the finger opens it.",
         ],
       },
     ],
