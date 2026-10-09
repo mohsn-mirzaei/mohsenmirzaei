@@ -100,8 +100,13 @@ export const experiences: Experience[] = [
       "Bilingual hedge fund platform — multi-step KYC onboarding, role-based dashboards, and a support ticketing system for customer verification workflows.",
     highlights: [
       "Developed an 11-step KYC wizard with in-browser ID capture and video recording, completed in a single web session.",
-      "Delivered 18 role-gated screens across public, user, and super-admin areas, integrating 36 REST endpoints via 30 typed hooks.",
-      "Implemented a bilingual EN/FA interface with ~1,700 localized strings and 6 Zod-validated forms shared across auth, KYC, and ticket flows.",
+      "Delivered 18 role-gated screens across public, user, and super-admin areas, integrating the API through 30 typed hooks.",
+      "Implemented a bilingual EN/FA interface with 633 strings in each language and 6 Zod-validated forms shared across auth, KYC, and ticket flows.",
+    ],
+    metrics: [
+      { value: "11", label: "KYC steps, one session" },
+      { value: "18", label: "pages across three roles" },
+      { value: "633", label: "strings, in each language" },
     ],
     stack: [
       "Next.js 15",

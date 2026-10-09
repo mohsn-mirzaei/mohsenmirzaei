@@ -489,4 +489,167 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
   },
+  {
+    slug: "propx",
+    title: "Propex — The Challenge, Then the Desk",
+    eyebrow: "Prop trading · Frontend",
+    year: "2025",
+    role: "Frontend Engineer · Freelance",
+    timeline: "4 months",
+    team: "Solo frontend, part-time",
+    intro:
+      "Propex sells a funded account. Before anyone trades it, three things have to exist: the rules of the challenge, proof of who is taking it, and a person who can answer when either one fails. I built that frontend — public pages, the trader's dashboard, and a super-admin desk — in English and Persian.",
+    heroMedia: {
+      src: "/images/projects/propx.png",
+      alt: "Propex 2-step challenge with identity under review, a 4–8% profit target, 12% max drawdown, and the first rule cards",
+      caption:
+        "Identity is under review. Instagram is followed. Telegram is still open. Under that: 12% max drawdown, a 4–8% target, and the first rules, marked Limited.",
+    },
+    metrics: [
+      { value: "11", label: "steps in one web session" },
+      { value: "18", label: "pages across three roles" },
+      { value: "30", label: "typed data hooks" },
+      { value: "633", label: "strings, in each language" },
+    ],
+    stack: [
+      "Next.js 15",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "next-intl",
+      "TanStack Query",
+      "Zustand",
+      "React Hook Form",
+      "Zod",
+    ],
+    sections: [
+      {
+        kicker: "01 — Problem",
+        heading: "Three jobs, one login",
+        body: [
+          "A challenge, an identity check, and a support desk are easy to draw as three products. They are one. The trader who is about to miss a drawdown rule is the same person whose ID photo is in review, and the reply has to land in a thread that knows both.",
+          "The shape of the work was 18 pages, two languages, and a sidebar that is a different product depending on who signed in.",
+        ],
+      },
+      {
+        kicker: "02 — Challenge",
+        heading: "The account, the target, the drawdown",
+        body: [
+          "The free 2-step challenge is the trader's home. Three tasks gate the account. On this one, identity is already under review, Instagram is followed, and Telegram is still open.",
+          "Under the tasks are the numbers that decide the account: 12% max drawdown, a profit target of 4% to 8%, a split of 50% to 100%. Then the rules, each marked Limited, Not Allowed, or Allowed. Copytrade needs an admin. A reset does not exist. The first row is the contract.",
+        ],
+      },
+      {
+        kicker: "03 — Identity",
+        heading: "The camera is the browser",
+        body: [
+          "The wizard is 11 steps and it stays in the phone browser. Phone, profile, address, then the document: passport, driver's license, or national ID. Choosing national ID opens the camera on the same page, with a frame and a line that says to put the front of the card inside it.",
+          "The card in these frames is a specimen. The name on it is Alex Sample, and it is stamped SAMPLE.",
+        ],
+        media: {
+          src: "/images/projects/propx-kyc.png",
+          alt: "Propex identity step on a phone in the dark theme, with the browser camera showing a specimen national ID for Alex Sample",
+          caption:
+            "The whole session, on a phone, in the dark theme. Phone, profile, address, the specimen card, the verification video, then You're All Set.",
+          video: "/videos/propx-kyc.mp4",
+        },
+      },
+      {
+        kicker: "04 — Queue",
+        heading: "The desk that can see both",
+        body: [
+          "The super-admin sidebar is the dashboard, identity review, and tickets. A thread is opened by the trader and closed by the desk, and the category on the row says whether it is about KYC, the challenge, or the account.",
+          "This queue is the English pass, the same language as the challenge and the camera.",
+        ],
+        media: {
+          src: "/images/projects/propx-tickets.png",
+          alt: "Propex super-admin ticket queue in English, with open and closed threads for KYC, the challenge, and the account",
+          caption:
+            "Five threads. Two are closed. The category is how the desk knows the thread is about the camera, the drawdown, or the withdrawal window.",
+        },
+      },
+      {
+        kicker: "05 — Outcome",
+        heading: "A path, with a desk at the end",
+        body: [
+          "A trader can read the rule that will fail them, prove who they are in the same tab, and open a thread the desk can close. The trader's sidebar ends at the threads they opened. The super-admin's sidebar starts at the queue.",
+          "English carries the challenge, the camera, and the desk. Persian is the same interface, with the sidebar on the other side.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "rtl-markdown-editor",
+    title: "RTL Markdown Book Editor",
+    eyebrow: "Product · Editor",
+    year: "2024",
+    role: "Full-Stack Engineer",
+    timeline: "8 months",
+    team: "On-site product team · I owned the editor",
+    intro:
+      "The manuscript is Persian, so the studio starts from the right. Monaco holds the source, the page beside it is the same text already set, and the toolbar inserts the structures a right-to-left book actually uses — a heading, a footnote, a passage you can jump to.",
+    heroMedia: {
+      src: "/images/projects/editor.png",
+      alt: "Persian chapter in a right-aligned Monaco pane, with the same sentences set in the live preview",
+      caption:
+        "The new sentence is its own line. The page on the right is that sentence, already set.",
+      video: "/videos/editor-preview.mp4",
+    },
+    metrics: [
+      { value: "24", label: "authoring commands on the toolbar" },
+      { value: "6", label: "heading levels the contents follow" },
+      { value: "2", label: "panes on the same passage" },
+      { value: "RTL", label: "text, caret, and toolbar" },
+    ],
+    stack: ["React", "TypeScript", "Monaco", "markdown-it", "TanStack Query"],
+    sections: [
+      {
+        kicker: "01 — Problem",
+        heading: "A book that starts from the right",
+        body: [
+          "The people writing the book were not writing code. They needed headings, a footnote, a quotation, and a way to land on a later chapter without scrolling the whole manuscript by hand. A generic markdown pane gives you the syntax and leaves the direction to the browser.",
+          "Persian text in a left-aligned editor is a different product from a page. The caret ends up on the wrong side of the line, the toolbar starts on the wrong side of the screen, and the preview, when there is one, is a second document you have to trust.",
+        ],
+      },
+      {
+        kicker: "02 — Commands",
+        heading: "Twenty-four, and one of them is a footnote",
+        body: [
+          "The toolbar is the whole command set: undo and redo, the inline marks, six heading levels, three lists, a quotation, code, a table, a link, image, video, audio, and a footnote. Media asks for an address. Everything else writes the syntax around the selection.",
+          "Here the selection is the last word of the sentence, انار. The footnote command wraps it and drops the note under the line. The page renders the marker and the note in the same moment — markdown-it, with the footnote plugin, not a second renderer.",
+        ],
+        media: {
+          src: "/images/projects/editor-commands.png",
+          alt: "Footnote command inserting a Persian note into Monaco and the live preview at the same time",
+          caption:
+            "انار stays the last word. The marker is in the source, and the page numbers it.",
+          video: "/videos/editor-commands.mp4",
+        },
+      },
+      {
+        kicker: "03 — Contents",
+        heading: "The list is a way of moving",
+        body: [
+          "A long chapter grows a third pane: فهرست مطالب, built from the same headings the preview renders. Six levels, right-aligned, the current passage a click away.",
+          "The click has to move both sides. The preview scrolls the heading to the top of the page. The editor reveals that same heading in the source, caret on the line. بازگشت is the one in this recording — chosen because it starts below the fold, and both panes can still reach it.",
+        ],
+        media: {
+          src: "/images/projects/editor-toc.png",
+          alt: "Table of contents jump landing on the بازگشت section in both the editor and the preview",
+          caption:
+            "The pointer is on بازگشت. The heading is at the top of the page, and on line 41 of the source.",
+          video: "/videos/editor-toc.mp4",
+        },
+      },
+      {
+        kicker: "04 — Outcome",
+        heading: "One manuscript, two views of it",
+        body: [
+          "What ships is a studio for a right-to-left book: the source and the page stay on the same passage, the toolbar writes the structure in place, and the contents list is how you move through a chapter that no longer fits on one screen.",
+          "The same season I also shipped the app builder and a schema-driven form builder. This one is the document: a page you can read while you are still typing it.",
+        ],
+      },
+    ],
+  },
 ];

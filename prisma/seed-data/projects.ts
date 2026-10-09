@@ -29,6 +29,35 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    title: "Propex",
+    slug: "propx",
+    category: "Prop trading · Frontend",
+    year: "2025",
+    description:
+      "Bilingual funded-account frontend: the challenge a trader has to pass, identity captured in the browser, and the super-admin queue behind both.",
+    bullets: [
+      "11-step KYC in one web session, with the ID photo taken by the browser's own camera.",
+      "18 pages across public, trader, and super-admin. The sidebar changes with the role.",
+      "English and Persian, 633 strings each. The screens in the case study are the English pass.",
+    ],
+    stack: [
+      "Next.js 15",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "next-intl",
+      "TanStack Query",
+      "Zod",
+    ],
+    media: {
+      image: "/images/projects/propx.png",
+      alt: "Propex 2-step challenge — identity under review, profit target, max drawdown, and the first rules",
+    },
+    caseStudy: true,
+    featured: true,
+  },
+  {
     title: "Chatomatic — AI SaaS",
     slug: "chatomatic",
     category: "AI · Full-Stack · Co-Founder",
@@ -129,9 +158,11 @@ export const projects: Project[] = [
     ],
     stack: ["React", "TypeScript", "Monaco", "markdown-it", "TanStack Query"],
     media: {
-      image: "/images/projects/editor.svg",
-      alt: "RTL markdown editor — Monaco editor pane with live preview of Persian book content",
+      image: "/images/projects/editor.png",
+      alt: "RTL book editor — Persian manuscript in Monaco beside the same page in the live preview",
+      video: "/videos/editor-preview.mp4",
     },
+    caseStudy: true,
   },
   {
     title: "No-Code App Builder",
